@@ -4,6 +4,7 @@ secrets.json
 files/
 archived/
 archive/
+*courtbook*.csv
 
 # Installer logs
 pip-log.txt
