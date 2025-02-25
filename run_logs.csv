@@ -4,3 +4,7 @@ timestamp,level,message
 2025-02-25 16:37:37,INFO,"2025-02-25 16:37:37,594 - INFO - Processing row 2/2 in file 11616_courtbook.csv"
 2025-02-25 16:37:55,INFO,"2025-02-25 16:37:55,513 - INFO - Processing complete for 11616_courtbook.csv. Output saved to 11616_chronology.csv"
 2025-02-25 16:38:58,INFO,"2025-02-25 16:38:58,448 - INFO - Skipping 11616_courtbook.csv; corresponding chronology file exists: 11616_chronology.csv"
+2025-02-25 16:49:11,INFO,"2025-02-25 16:49:11,427 - INFO - Processing file: 11616_courtbook.csv (missing corresponding chronology file)"
+2025-02-25 16:49:11,INFO,"2025-02-25 16:49:11,427 - INFO - Processing row 1/2 in file 11616_courtbook.csv"
+2025-02-25 16:49:18,INFO,"2025-02-25 16:49:18,615 - INFO - Processing row 2/2 in file 11616_courtbook.csv"
+2025-02-25 16:49:34,INFO,"2025-02-25 16:49:34,385 - INFO - Processing complete for 11616_courtbook.csv. Output saved to 11616_chronology.csv"
