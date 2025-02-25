@@ -2,6 +2,8 @@ import json
 import requests
 import warnings
 from urllib3.exceptions import InsecureRequestWarning
+import os
+from dotenv import load_dotenv
 
 # Suppress SSL warnings from urllib3
 warnings.simplefilter('ignore', InsecureRequestWarning)
@@ -12,13 +14,14 @@ SECRETS_FILE = "G:/01_Python/Projects/secrets.json"
 RETRY_INTERVAL = 5  # Time in seconds to wait before checking task status
 
 class LLMClient:
-    def __init__(self, secrets_file=SECRETS_FILE):
-        """Initialize the LLMClient by loading credentials and retrieving the token."""
-        with open(SECRETS_FILE, 'r') as file:
-            secrets = json.load(file)
-        self.username    = secrets['username']
-        self.email       = secrets['email']
-        self.password    = secrets['password']
+    def __init__(self):
+        """Initialize the LLMClient by loading credentials from .env and retrieving the token."""
+        load_dotenv()  # Load environment variables from .env file
+
+        self.username = os.getenv("BREW_USERNAME")
+        self.email = os.getenv("BREW_EMAIL")
+        self.password = os.getenv("BREW_PASSWORD")
+
         self.token_async = self.get_access_token(sync=False)
         self.token_sync  = self.get_access_token(sync=True)
 
