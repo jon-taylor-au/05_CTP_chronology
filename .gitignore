@@ -5,6 +5,8 @@ files/
 archived/
 archive/
 *courtbook*.csv
+*chronology*.csv
+*webapp_extract*.csv
 
 # Installer logs
 pip-log.txt

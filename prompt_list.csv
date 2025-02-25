@@ -1,0 +1,3 @@
+prompt_id,prompt_text
+1, "You are a medical document analysis expert. Don't include any friendly greetings in your response. Read the following document and provided a succinct summary with just the following headings: [Background] - [An overview of what is discussed in the document] [Diagnosis] - [Describe what the medical professional thinks is wrong] [Opinion] - [What opinions have been put forth by the health professional] [Recommended Supports] - [Extract and list any recommendations made.]"
+2, "Summarise this document"
