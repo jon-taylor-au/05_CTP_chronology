@@ -8,11 +8,11 @@ warnings.simplefilter('ignore', InsecureRequestWarning)
 
 # Constants
 BASE_URL = 'https://sparkechat.sparke.com.au'
-SECRETS_FILE = "G:/01_Python/secrets.json"
+SECRETS_FILE = "G:/01_Python/Projects/secrets.json"
 RETRY_INTERVAL = 5  # Time in seconds to wait before checking task status
 
 class LLMClient:
-    def __init__(self, secrets_file="G:/01_Python/secrets.json"):
+    def __init__(self, secrets_file=SECRETS_FILE):
         """Initialize the LLMClient by loading credentials and retrieving the token."""
         with open(SECRETS_FILE, 'r') as file:
             secrets = json.load(file)

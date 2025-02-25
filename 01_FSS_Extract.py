@@ -86,6 +86,7 @@ def parse_data(data):
         court_book_id = entry.get("courtBookId")
         book_item_id = entry.get("bookItemId")
         entry_date_ms = entry.get("entryDate")
+        prompt_id = 1  # Assuming a default value for prompt ID
         entry_original_html = entry.get("entryOriginal")
         
         try:
@@ -99,6 +100,7 @@ def parse_data(data):
             "Court Book ID": court_book_id,
             "Book Item ID": book_item_id,
             "Entry Date": entry_date,
+            "PromptID": prompt_id,
             "Entry Original": entry_original
         })
     return rows

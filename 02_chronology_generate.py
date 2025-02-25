@@ -6,7 +6,7 @@ from llm_class import LLMClient  # Assuming the class file is saved as llm_clien
 
 # Configuration
 INPUT_FILE = "Inputs.xlsx"  # Change as needed
-OUTPUT_FILE_TEMPLATE = "output_{timestamp}.xlsx"
+OUTPUT_FILE_TEMPLATE = "output_{timestamp}.csv"
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
