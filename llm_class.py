@@ -78,7 +78,7 @@ class LLMClient:
             'Content-Type': 'application/json',
             'Authorization': f'Bearer {self.token_async}'
         }
-        data = {"docID": doc_id, "prompt": prompt, "meta_prompt": ""}
+        data = {"docID": doc_id, "prompt": prompt, "meta_prompt": "If the text is not clear respond with 'I don't know'"}
         response = requests.post(f"{BASE_URL}{endpoint}", headers=headers, json=data, verify=False)
 
         if response.status_code in [200, 201]:

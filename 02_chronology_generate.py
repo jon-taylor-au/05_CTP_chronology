@@ -91,6 +91,7 @@ def process_courtbook_file(input_file, prompt_file, output_file):
         # Process each row in the input file
         for index, row in df.iterrows():
             logging.info(f"Processing row {index + 1}/{len(df)} in file {input_file}")
+            entry_date = row["Entry Date"]
             original = row["Entry_Original"]
             prompt_id = row["PromptID"]
             prompt_text = prompt_dict.get(prompt_id)
@@ -100,11 +101,11 @@ def process_courtbook_file(input_file, prompt_file, output_file):
             else:
                 response = process_row(original, prompt_text)
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            results.append([original, prompt_id, prompt_text, response, timestamp])
+            results.append([entry_date, original, response, timestamp])
         
-        # Create output DataFrame with appropriate column names
+        # Create output DataFrame without PromptID and PromptText
         output_df = pd.DataFrame(results, 
-                                 columns=["Entry_Original", "PromptID", "PromptText", "Response", "Timestamp"])
+                                 columns=["Entry Date", "Entry_Original", "Response", "Timestamp"]) 
         output_df.to_csv(output_file, index=False)
         logging.info(f"Processing complete for {input_file}. Output saved to {output_file}")
     except Exception as e:

@@ -70,13 +70,21 @@ def fetch_api_data(session, court_book_id):
     """Fetch data from the API for the given court book ID."""
     api_url = f"{BASE_URL}/sparke/api/v0/books/{court_book_id}/chronology/"
     api_headers = {
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-        "Accept-Encoding": "gzip, deflate",
-        "Accept-Language": "en-AU,en-US;q=0.9,en;q=0.8",
-        "Upgrade-Insecure-Requests": "1",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+        "Accept": "application/json"
     }
     response = session.get(api_url, headers=api_headers)
+
+    try:
+        data = response.json()
+        print(f"Total records received from API: {len(data)}")  # Debugging
+    except Exception as e:
+        print("Error parsing JSON response:", e)
+
+    # Debugging: Print status and response size
+    print(f"Fetching data for Court Book ID: {court_book_id}")
+    print(f"Response Status Code: {response.status_code}")
+
     return response
 
 def parse_data(data):
@@ -106,11 +114,16 @@ def parse_data(data):
     return rows
 
 def save_to_csv(rows, court_book_id):
-    """Save the parsed rows to a CSV file named '{court_book_id}_courtbook.csv'."""
+    """Save the parsed rows to a CSV file."""
     filename = f"{court_book_id}_courtbook.csv"
     df = pd.DataFrame(rows)
+
+    # Debug: Print all book_item_ids before saving
+    print(f"Book Item IDs being saved: {df['Book Item ID'].tolist()}")
+
     df.to_csv(filename, index=False)
-    print(f"Data successfully written to {filename}")
+    print(f"Total rows written: {len(df)}")
+
 
 def process_court_book(court_book_id):
     """Authenticate, fetch API data for a court book ID, parse it, and save to CSV."""
