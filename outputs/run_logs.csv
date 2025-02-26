@@ -1,0 +1,11 @@
+timestamp,level,message
+2025-02-27 08:53:01,INFO,"2025-02-27 08:53:01,184 - INFO - Processing file: outputs\11658_courtbook.csv (missing corresponding chronology file)"
+2025-02-27 08:53:01,ERROR,"2025-02-27 08:53:01,194 - ERROR - Unexpected error processing outputs\11658_courtbook.csv: [Errno 2] No such file or directory: 'prompt_list.csv'"
+2025-02-27 08:53:55,INFO,"2025-02-27 08:53:55,586 - INFO - Processing file: outputs\11658_courtbook.csv (missing corresponding chronology file)"
+2025-02-27 08:53:55,ERROR,"2025-02-27 08:53:55,586 - ERROR - Unexpected error processing outputs\11658_courtbook.csv: [Errno 2] No such file or directory: 'support/prompt_list.csv'"
+2025-02-27 08:54:34,INFO,"2025-02-27 08:54:34,868 - INFO - Processing file: outputs\11658_courtbook.csv (missing corresponding chronology file)"
+2025-02-27 08:54:34,INFO,"2025-02-27 08:54:34,868 - INFO - Processing row 1/4 in file outputs\11658_courtbook.csv"
+2025-02-27 08:54:42,INFO,"2025-02-27 08:54:42,038 - INFO - Processing row 2/4 in file outputs\11658_courtbook.csv"
+2025-02-27 08:54:45,INFO,"2025-02-27 08:54:45,583 - INFO - Processing row 3/4 in file outputs\11658_courtbook.csv"
+2025-02-27 08:54:49,INFO,"2025-02-27 08:54:49,746 - INFO - Processing row 4/4 in file outputs\11658_courtbook.csv"
+2025-02-27 08:54:53,INFO,"2025-02-27 08:54:53,645 - INFO - Processing complete for outputs\11658_courtbook.csv. Output saved to outputs\11658_chronology.csv"

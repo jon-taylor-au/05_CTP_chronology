@@ -13,6 +13,7 @@ BASE_URL = "http://sydwebdev139:8080"
 LOGIN_PAGE_URL = f"{BASE_URL}/sparke/authed/user.action?cmd=welcome"
 LOGIN_URL = f"{BASE_URL}/sparke/authed/j_security_check"
 CSV_FILE = '00_courtbooks_to_get.csv'  # CSV containing court book IDs
+OUTPUT_LOCATION = 'outputs/'  # Folder to save the output files
 
 def load_credentials():
     """Load USER and PASSWORD from the .env file."""
@@ -115,7 +116,7 @@ def parse_data(data):
 
 def save_to_csv(rows, court_book_id):
     """Save the parsed rows to a CSV file."""
-    filename = f"{court_book_id}_courtbook.csv"
+    filename = f"{OUTPUT_LOCATION}{court_book_id}_courtbook.csv"
     df = pd.DataFrame(rows)
 
     # Debug: Print all book_item_ids before saving

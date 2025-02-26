@@ -1,10 +1,14 @@
 import pandas as pd
 import datetime
 import logging
-from llm_class import LLMClient  # Assuming the class file is saved as llm_class.py
+from supporting_files.llm_class import LLMClient  # Assuming the class file is saved as llm_class.py
 import os
 import glob
 import csv
+
+# CONSTANTS
+OUTPUT_LOCATION = 'outputs/'  # Folder to save the output files
+SUPPORT_LOCATION = 'supporting_files/'  # Folder containing support files
 
 # --- Custom CSV Log Handler ---
 class CSVLogHandler(logging.Handler):
@@ -39,7 +43,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger()
-csv_handler = CSVLogHandler("run_logs.csv")
+csv_handler = CSVLogHandler(f"{OUTPUT_LOCATION}run_logs.csv")
 csv_handler.setLevel(logging.INFO)
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 csv_handler.setFormatter(formatter)
@@ -47,9 +51,9 @@ logger.addHandler(csv_handler)
 
 # --- File Lookup ---
 # Get all files that contain "courtbook.csv" in their name
-courtbook_files = glob.glob("*courtbook.csv")
+courtbook_files = glob.glob(f"{OUTPUT_LOCATION}*courtbook.csv")
 # Get all files that contain "chronology.csv" in their name (for fast lookup)
-chronology_files = set(glob.glob("*chronology.csv"))
+chronology_files = set(glob.glob(f"{OUTPUT_LOCATION}*chronology.csv"))
 
 # --- LLM Processing Functions ---
 def process_row(original, prompt):
@@ -116,7 +120,7 @@ def process_courtbook_file(input_file, prompt_file, output_file):
 llm_client = LLMClient()
 
 def main():
-    PROMPT_FILE = "prompt_list.csv"  # CSV with columns prompt_id and prompt_text
+    PROMPT_FILE = f"{SUPPORT_LOCATION}prompt_list.csv"  # CSV with columns prompt_id and prompt_text
 
     # Process each courtbook file that does NOT have a corresponding chronology file.
     for cb_file in courtbook_files:
