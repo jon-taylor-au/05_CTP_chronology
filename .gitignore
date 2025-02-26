@@ -1,6 +1,8 @@
 # Custom ignores
 models/
+temp/
 secrets.json
+outputs/
 files/
 archived/
 archive/
