@@ -1,7 +1,6 @@
 import pandas as pd
 import datetime
 import logging
-import re
 from supporting_files.llm_class import LLMClient  # Assuming the class file is saved as llm_class.py
 import os
 import glob
@@ -13,9 +12,14 @@ SUPPORT_LOCATION = 'supporting_files/'  # Folder containing support files
 
 # --- Custom CSV Log Handler ---
 class CSVLogHandler(logging.Handler):
+    """
+    Custom logging handler that writes log messages to a CSV file.
+    Each log row will contain: timestamp, log level, and message.
+    """
     def __init__(self, filename):
         super().__init__()
         self.filename = filename
+        # If the file doesn't exist, create it and write the header row.
         if not os.path.exists(filename):
             with open(filename, 'w', newline='') as f:
                 writer = csv.writer(f)
@@ -23,6 +27,7 @@ class CSVLogHandler(logging.Handler):
 
     def emit(self, record):
         try:
+            # Create a formatted timestamp
             timestamp = datetime.datetime.fromtimestamp(record.created).strftime("%Y-%m-%d %H:%M:%S")
             level = record.levelname
             message = self.format(record)
@@ -45,32 +50,29 @@ csv_handler.setFormatter(formatter)
 logger.addHandler(csv_handler)
 
 # --- File Lookup ---
+# Get all files that contain "courtbook.csv" in their name
 courtbook_files = glob.glob(f"{OUTPUT_LOCATION}*courtbook.csv")
+# Get all files that contain "chronology.csv" in their name (for fast lookup)
 chronology_files = set(glob.glob(f"{OUTPUT_LOCATION}*chronology.csv"))
 
 # --- LLM Processing Functions ---
-def extract_bullet_points(response):
-    """Extracts bullet points from the response if present, otherwise returns 'Inconclusive Response'."""
-    bullet_pattern = re.findall(r"(?:^|\n)[*-]\s+.*", response)
-    
-    if bullet_pattern:
-        return "In Summary\n" + "\n".join(bullet_pattern)
-    else:
-        return "Inconclusive Response"
-
 def process_row(original, prompt):
     """Processes a single row by sending data to the LLM and retrieving the response."""
     try:
         response = llm_client.send_chat_request(original, prompt)
-        if response:
-            return extract_bullet_points(response)
-        return "Error: No response received"
+        return response if response else "Error: No response received"
     except Exception as e:
         logging.error(f"Error processing row: {e}")
         return "Error: Exception occurred"
 
 def process_courtbook_file(input_file, prompt_file, output_file):
+    """
+    Reads an input CSV (with columns Entry_Original and PromptID),
+    looks up the prompt text from prompt_file (CSV with prompt_id and prompt_text),
+    processes each row via the LLM, and saves the results to output_file.
+    """
     try:
+        # Read the input CSV file
         df = pd.read_csv(input_file)
         required_input_columns = {"Entry_Original", "PromptID"}
         if not required_input_columns.issubset(df.columns):
@@ -78,6 +80,7 @@ def process_courtbook_file(input_file, prompt_file, output_file):
             logging.error(f"Input file {input_file} missing required columns: {missing}")
             return
 
+        # Read the prompt lookup CSV file
         prompt_df = pd.read_csv(prompt_file)
         required_prompt_columns = {"prompt_id", "prompt_text"}
         if not required_prompt_columns.issubset(prompt_df.columns):
@@ -85,36 +88,41 @@ def process_courtbook_file(input_file, prompt_file, output_file):
             logging.error(f"Prompt file {prompt_file} missing required columns: {missing}")
             return
 
+        # Create a dictionary mapping prompt_id to prompt_text
         prompt_dict = dict(zip(prompt_df["prompt_id"], prompt_df["prompt_text"]))
+        
         results = []
-
+        # Process each row in the input file
         for index, row in df.iterrows():
             logging.info(f"Processing row {index + 1}/{len(df)} in file {input_file}")
             entry_date = row["Entry Date"]
             original = row["Entry_Original"]
             prompt_id = row["PromptID"]
             prompt_text = prompt_dict.get(prompt_id)
-            
             if prompt_text is None:
                 logging.error(f"No prompt found for PromptID: {prompt_id}")
                 response = "Error: No prompt found"
             else:
                 response = process_row(original, prompt_text)
-            
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             results.append([entry_date, original, response, timestamp])
-
-        output_df = pd.DataFrame(results, columns=["Entry Date", "Entry_Original", "Response", "Timestamp"])
+        
+        # Create output DataFrame without PromptID and PromptText
+        output_df = pd.DataFrame(results, 
+                                 columns=["Entry Date", "Entry_Original", "Response", "Timestamp"]) 
         output_df.to_csv(output_file, index=False)
         logging.info(f"Processing complete for {input_file}. Output saved to {output_file}")
     except Exception as e:
         logging.error(f"Unexpected error processing {input_file}: {e}")
 
 # --- Main Processing ---
+# Initialize LLM Client
 llm_client = LLMClient()
 
 def main():
-    PROMPT_FILE = f"{SUPPORT_LOCATION}prompt_list.csv"
+    PROMPT_FILE = f"{SUPPORT_LOCATION}prompt_list.csv"  # CSV with columns prompt_id and prompt_text
+
+    # Process each courtbook file that does NOT have a corresponding chronology file.
     for cb_file in courtbook_files:
         expected_chronology = cb_file.replace("courtbook.csv", "chronology.csv")
         if expected_chronology not in chronology_files:
