@@ -2,7 +2,7 @@ import pandas as pd
 import datetime
 import logging
 import re
-from supporting_files.llm_class import LLMClient  # Assuming the class file is saved as llm_class.py
+from supporting_files.llm_class import LLMClient  # Custom LLM Client
 import os
 import glob
 import csv
@@ -50,13 +50,13 @@ chronology_files = set(glob.glob(f"{OUTPUT_LOCATION}*chronology.csv"))
 
 # --- LLM Processing Functions ---
 def extract_bullet_points(response):
-    """Extracts bullet points from the response if present, otherwise returns 'Inconclusive Response'."""
-    bullet_pattern = re.findall(r"(?:^|\n)[*-]\s+.*", response)
+    """Extracts bullet points and sub-bullets from the response if present, otherwise returns 'Inconclusive Response'."""
+    bullet_pattern = re.findall(r"(?:^|\n)\s*[*\-•→]+\s+.*", response)  # Allows spaces/tabs before bullets
     
     if bullet_pattern:
         return "In Summary\n" + "\n".join(bullet_pattern)
     else:
-        return "Inconclusive Response"
+        return "Inconclusive Response"# + response 
 
 def process_row(original, prompt):
     """Processes a single row by sending data to the LLM and retrieving the response."""

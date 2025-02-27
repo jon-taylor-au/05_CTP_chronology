@@ -1,12 +1,12 @@
 @echo off
 REM Run the first Python script
-echo Running 01_fss_extract.py...
-python 01_fss_extract.py
+echo Running 01_webapp_extract.py...
+python 01_webapp_extract.py
 IF %ERRORLEVEL% NEQ 0 (
-    echo 01_fss_extract.py encountered an error. Exiting.
+    echo 01_webapp_extract.py encountered an error. Exiting.
     exit /b %ERRORLEVEL%
 )
-echo 01_fss_extract.py completed.
+echo 01_webapp_extract.py completed.
 
 REM Run the second Python script
 echo Running 02_chronology_create.py...

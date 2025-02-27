@@ -12,6 +12,7 @@ warnings.simplefilter('ignore', InsecureRequestWarning)
 BASE_URL = 'https://sparkechat.sparke.com.au'
 SECRETS_FILE = "G:/01_Python/Projects/secrets.json"
 RETRY_INTERVAL = 5  # Time in seconds to wait before checking task status
+META_PROMPT = "REMEMBER I only want a bullet point list in the response or otherwise say 'I dont' know'"
 
 class LLMClient:
     def __init__(self):
@@ -78,7 +79,7 @@ class LLMClient:
             'Content-Type': 'application/json',
             'Authorization': f'Bearer {self.token_async}'
         }
-        data = {"docID": doc_id, "prompt": prompt, "meta_prompt": "If the text is not clear respond with 'I don't know'"}
+        data = {"docID": doc_id, "prompt": prompt, "meta_prompt": META_PROMPT}
         response = requests.post(f"{BASE_URL}{endpoint}", headers=headers, json=data, verify=False)
 
         if response.status_code in [200, 201]:
