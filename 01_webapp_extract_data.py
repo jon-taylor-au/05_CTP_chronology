@@ -4,7 +4,7 @@ import glob
 import os
 from datetime import datetime
 from supporting_files.webapp_class import APIClient
-#import textwrap
+from bs4 import BeautifulSoup
 import uuid
 
 # Constants
@@ -14,9 +14,25 @@ LOGIN_URL = f"{BASE_URL}/sparke/authed/j_security_check"
 CSV_FILE = '00_courtbooks_to_get.csv'
 OUTPUT_LOCATION = 'outputs/'
 
-def extract_first_line(text):
-    """Extracts the first line of text."""
-    return text.split("\n")[0] if text else "-"
+def extract_first_line(text, max_length=80):
+    """Extracts the first non-empty line of text from <p> tags in an HTML string and truncates it."""
+    if not text:
+        return "-"
+
+    # Parse the HTML content
+    soup = BeautifulSoup(text, "html.parser")
+
+    # Find all <p> elements
+    paragraphs = soup.find_all("p")
+
+    # Iterate through paragraphs and return the first non-empty text
+    for p in paragraphs:
+        clean_text = p.get_text(strip=True)  # Remove leading/trailing spaces
+        if clean_text:  # Skip empty paragraphs
+            return (clean_text[:max_length] + "...") if len(clean_text) > max_length else clean_text
+    
+    return "-"
+
 
 def split_text_into_parts(text, num_parts):
     """Splits text into roughly equal parts, keeping sentence integrity if possible."""

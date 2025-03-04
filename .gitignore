@@ -8,7 +8,7 @@ archived/
 archive/
 *courtbook.csv
 *chronology*.csv
-debug.log
+*debug*
 
 # Installer logs
 pip-log.txt
