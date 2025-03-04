@@ -39,7 +39,7 @@ def clean_response(text):
 
 
 def concatenate_parts():
-    """Concatenates all part CSV files into a single final CSV per court book."""
+    """Concatenates all part CSV files into a single final CSV per court book and recombines entries with the same Unique ID."""
     part_files = glob.glob(os.path.join(OUTPUT_LOCATION, FILE_PATTERN))
     
     if not part_files:
@@ -65,6 +65,21 @@ def concatenate_parts():
         # Clean 'Response' column
         if "Response" in final_df.columns:
             final_df["Response"] = final_df["Response"].apply(clean_response)
+        
+        # Remove 'Part' column
+        if "Part" in final_df.columns:
+            final_df.drop(columns=["Part"], inplace=True)
+        
+        # Recombine entries with the same Unique ID
+        if "UniqueID" in final_df.columns:
+            final_df = final_df.groupby("UniqueID", as_index=False).agg({
+                "EntryDate": "first",  # Keep the first date
+                "EntryDescription": "first",  # Keep the first description
+                "EntryOriginal": "first",  # Keep the first original entry
+                "Response": " \n".join,  # Concatenate responses
+                "Handwritten": "first",  # Keep the first handwritten value
+                "TimeProcessed": "first"  # Keep the first processed time
+            })
         
         # Save the merged file
         final_filename = os.path.join(OUTPUT_LOCATION, f"{courtbook_id}_chronology.csv")
