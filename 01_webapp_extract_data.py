@@ -86,7 +86,8 @@ def parse_data(data):
                 "PromptID": 1,
                 "Entry_Original": part_text,  # Now only contains part of the text
                 "Token Count": token_count,  # Same total token count
-                "Part": f"Part {part_index}/{num_parts}",  # "Part 1/3"
+                "Part": f"Part {part_index}/{num_parts}",  # "Part 1/3",
+                "Handwritten": entry.get("handwritten"),
                 "Entry Description": first_line if first_line.isupper() else "-"
             })
             index_counter += 1  # Increment index for each split part
@@ -99,7 +100,7 @@ def save_to_csv(rows, court_book_id):
     filename = os.path.join(OUTPUT_LOCATION, f"{court_book_id}_courtbook.csv")
     df = pd.DataFrame(rows)
     # reorder the columns so Index is the first column
-    cols = ["Index", "Unique ID","Part", "First Line", "Court Book ID", "Book Item ID", "Entry Date", "PromptID", "Entry_Original","Token Count", "Entry Description"]
+    cols = ["Index", "Unique ID","Part", "First Line", "Handwritten","Court Book ID", "Book Item ID", "Entry Date", "PromptID", "Entry_Original","Token Count", "Entry Description"]
     df = df[cols]
     df.to_csv(filename, index=False)
     print(f"CSV file successfully saved: {filename}")
