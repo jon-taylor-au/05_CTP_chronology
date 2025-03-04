@@ -45,6 +45,12 @@ class APIClient:
 
     @staticmethod
     def clean_html(html_content):
-        """Convert HTML to clean text."""
+        """Convert HTML to clean text and ensure a non-empty result."""
+        if not html_content:  # If input is None or empty
+            return ""  
+
         soup = BeautifulSoup(html_content, "html.parser")
-        return unescape(soup.get_text(separator=" ", strip=True))
+        text = unescape(soup.get_text(separator=" ", strip=True))
+        
+        return text if text else ""  # Ensure we never return None
+
