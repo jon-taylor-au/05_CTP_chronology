@@ -3975,3 +3975,7 @@ timestamp,level,message
 2025-03-04 13:15:25,INFO,"2025-03-04 13:15:25,227 - INFO - Processing row 51/52 in file outputs\11661_courtbook.csv"
 2025-03-04 13:15:34,INFO,"2025-03-04 13:15:34,762 - INFO - Processing row 52/52 in file outputs\11661_courtbook.csv"
 2025-03-04 13:16:01,INFO,"2025-03-04 13:16:01,402 - INFO - Processing complete for outputs\11661_courtbook.csv. Output saved to outputs\11661_chronology.csv"
+2025-03-05 10:13:15,INFO,"2025-03-05 10:13:15,543 - INFO - Processing file: outputs\11661_courtbook.csv (missing corresponding chronology file)"
+2025-03-05 10:13:15,INFO,"2025-03-05 10:13:15,581 - INFO - Processing row 1/2 in file outputs\11661_courtbook.csv"
+2025-03-05 10:13:30,INFO,"2025-03-05 10:13:30,378 - INFO - Processing row 2/2 in file outputs\11661_courtbook.csv"
+2025-03-05 10:13:45,INFO,"2025-03-05 10:13:45,984 - INFO - Processing complete for outputs\11661_courtbook.csv. Output saved to outputs\11661_chronology.csv"
