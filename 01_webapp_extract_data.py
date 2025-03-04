@@ -4,6 +4,8 @@ import glob
 import os
 from datetime import datetime
 from supporting_files.webapp_class import APIClient
+#import textwrap
+import uuid
 
 # Constants
 BASE_URL = "http://sydwebdev139:8080"
@@ -16,10 +18,26 @@ def extract_first_line(text):
     """Extracts the first line of text."""
     return text.split("\n")[0] if text else "-"
 
+def split_text_into_parts(text, num_parts):
+    """Splits text into roughly equal parts, keeping sentence integrity if possible."""
+    words = text.split()  # Tokenize by words
+    split_size = len(words) // num_parts  # Words per part
+
+    parts = []
+    for i in range(num_parts):
+        start = i * split_size
+        end = None if i == num_parts - 1 else (i + 1) * split_size
+        part_text = " ".join(words[start:end])  # Join words back into a string
+        parts.append(part_text.strip())  # Remove leading/trailing spaces
+    
+    return parts
+
 def parse_data(data):
-    """Processes API response into structured rows for CSV output, including an index."""
+    """Processes API response into structured rows for CSV output, including split text parts."""
     rows = []
     index_counter = 0  # Initialize the index counter
+    TOKEN_LIMIT = 3500  # Max tokens per part
+
     for entry in data:
         try:
             entry_date = datetime.fromtimestamp(entry.get("entryDate", 0) / 1000)
@@ -28,28 +46,44 @@ def parse_data(data):
 
         entry_original = APIClient.clean_html(entry.get("entryOriginal", ""))
         first_line = extract_first_line(entry.get("entryFinal", ""))
-        word_count = len(entry_original.split())  # Calculate word count
+        word_count = len(entry_original.split())  # Count words
+        token_count = int(round(word_count * 1.3))  # Estimate token count
+        
+        # Generate a unique ID for the original entry (before splitting)
+        unique_id = str(uuid.uuid4())
 
-        rows.append({
-            "Index": index_counter,  # Add the index to the row
-            "First Line": first_line,
-            "Court Book ID": entry.get("courtBookId"),
-            "Book Item ID": entry.get("bookItemId"),
-            "Entry Date": entry_date,
-            "PromptID": 1,
-            "Entry_Original": entry_original,
-            "Token Count": int(round(word_count * 1.3)),  # Include word count
-            "Entry Description": first_line if first_line.isupper() else "-"
-        })
-        index_counter += 1  # Increment the counter for the next row
+        # Determine the number of parts needed
+        num_parts = max(1, -(-token_count // TOKEN_LIMIT))  # Equivalent to math.ceil(token_count / TOKEN_LIMIT)
+
+        # Split `Entry_Original` into multiple parts
+        entry_parts = split_text_into_parts(entry_original, num_parts)
+
+        # Create rows for each part
+        for part_index, part_text in enumerate(entry_parts, start=1):
+            rows.append({
+                "Index": index_counter,  # Incremental index
+                "Unique ID": unique_id,  # Same ID for all parts of an entry
+                "First Line": first_line,
+                "Court Book ID": entry.get("courtBookId"),
+                "Book Item ID": entry.get("bookItemId"),
+                "Entry Date": entry_date,
+                "PromptID": 1,
+                "Entry_Original": part_text,  # Now only contains part of the text
+                "Token Count": token_count,  # Same total token count
+                "Part": f"Part {part_index}/{num_parts}",  # "Part 1/3"
+                "Entry Description": first_line if first_line.isupper() else "-"
+            })
+            index_counter += 1  # Increment index for each split part
+
     return rows
+
 
 def save_to_csv(rows, court_book_id):
     """Saves processed data to a CSV file."""
     filename = os.path.join(OUTPUT_LOCATION, f"{court_book_id}_courtbook.csv")
     df = pd.DataFrame(rows)
     # reorder the columns so Index is the first column
-    cols = ["Index", "First Line", "Court Book ID", "Book Item ID", "Entry Date", "PromptID", "Entry_Original","Token Count", "Entry Description"]
+    cols = ["Index", "Unique ID","Part", "First Line", "Court Book ID", "Book Item ID", "Entry Date", "PromptID", "Entry_Original","Token Count", "Entry Description"]
     df = df[cols]
     df.to_csv(filename, index=False)
     print(f"CSV file successfully saved: {filename}")
