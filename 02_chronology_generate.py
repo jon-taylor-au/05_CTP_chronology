@@ -10,6 +10,7 @@ import csv
 # CONSTANTS
 OUTPUT_LOCATION = 'outputs/'  # Folder to save the output files
 SUPPORT_LOCATION = 'supporting_files/'  # Folder containing support files
+RECORDS_TO_PROCESS = 2  # Number of records to process in each file
 
 # --- Custom CSV Log Handler ---
 class CSVLogHandler(logging.Handler):
@@ -69,7 +70,7 @@ def process_row(original, prompt):
         logging.error(f"Error processing row: {e}")
         return "Error: Exception occurred"
 
-def process_courtbook_file(input_file, prompt_file, output_file):
+def process_courtbook_file(input_file, prompt_file, output_prefix):
     try:
         df = pd.read_csv(input_file)
         required_input_columns = {"Entry_Original", "PromptID"}
@@ -86,31 +87,44 @@ def process_courtbook_file(input_file, prompt_file, output_file):
             return
 
         prompt_dict = dict(zip(prompt_df["prompt_id"], prompt_df["prompt_text"]))
-        results = []
+        total_records = len(df)
+        num_parts = (total_records + RECORDS_TO_PROCESS - 1) // RECORDS_TO_PROCESS  # Calculate total parts
 
-        for index, row in df.iterrows():
-            logging.info(f"Processing row {index + 1}/{len(df)} in file {input_file}")
-            entry_date = row["Entry Date"]
-            entry_description = row["Entry Description"]
-            original = row["Entry_Original"]
-            prompt_id = row["PromptID"]
-            unique_id = row.get("Unique ID", "-")
-            part_no = row.get("Part", "")
-            handwritten = row.get("Handwritten", "-")
-            prompt_text = prompt_dict.get(prompt_id)
-            
-            if prompt_text is None:
-                logging.error(f"No prompt found for PromptID: {prompt_id}")
-                response = "Error: No prompt found"
-            else:
-                response = process_row(original, prompt_text)
-            
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            results.append([unique_id,part_no,entry_date, entry_description, original, response, handwritten,timestamp])
+        for part in range(num_parts):
+            start_idx = part * RECORDS_TO_PROCESS
+            end_idx = min((part + 1) * RECORDS_TO_PROCESS, total_records)
 
-        output_df = pd.DataFrame(results, columns=["UniqueID","PartNo","EntryDate", "EntryDescription","EntryOriginal", "Response","Handwritten", "TimeProcessed"])
-        output_df.to_csv(output_file, index=False)
-        logging.info(f"Processing complete for {input_file}. Output saved to {output_file}")
+            logging.info(f"Processing records {start_idx + 1} to {end_idx} of {total_records} in {input_file}")
+
+            batch_df = df.iloc[start_idx:end_idx]  # Get the current batch
+            results = []
+
+            for index, row in batch_df.iterrows():
+                entry_date = row["Entry Date"]
+                entry_description = row["Entry Description"]
+                original = row["Entry_Original"]
+                prompt_id = row["PromptID"]
+                unique_id = row.get("Unique ID", "-")
+                part_no = row.get("Part", "")
+                handwritten = row.get("Handwritten", "-")
+                prompt_text = prompt_dict.get(prompt_id)
+
+                if prompt_text is None:
+                    logging.error(f"No prompt found for PromptID: {prompt_id}")
+                    response = "Error: No prompt found"
+                else:
+                    response = process_row(original, prompt_text)
+
+                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                results.append([unique_id, part_no, entry_date, entry_description, original, response, handwritten, timestamp])
+
+            # Save batch results to CSV
+            part_filename = output_prefix.replace("chronology.csv", f"part{part + 1}.csv")
+            output_df = pd.DataFrame(results, columns=["UniqueID", "PartNo", "EntryDate", "EntryDescription", "EntryOriginal", "Response", "Handwritten", "TimeProcessed"])
+            output_df.to_csv(part_filename, index=False)
+
+            logging.info(f"Saved batch {part + 1} to {part_filename}")
+
     except Exception as e:
         logging.error(f"Unexpected error processing {input_file}: {e}")
 
