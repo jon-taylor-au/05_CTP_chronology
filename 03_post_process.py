@@ -17,7 +17,6 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-
 def clean_response(text):
     """Cleans the 'Response' text by removing unnecessary bullet points and formatting."""
     if not isinstance(text, str):
@@ -40,7 +39,6 @@ def clean_response(text):
     cleaned_text = "\n".join(["\t" + line for line in cleaned_lines]).replace("â€¢", "*")  # Add tab indentation to each line
     
     return cleaned_text.strip()  # Ensure no leading/trailing whitespace
-
 
 def format_excel(file_path):
     """Applies formatting to the final Excel file."""
@@ -83,7 +81,6 @@ def format_excel(file_path):
     
     wb.save(file_path)
 
-
 def concatenate_parts():
     """Concatenates all part CSV files into a single final Excel file per court book and recombines entries with the same Unique ID."""
     part_files = glob.glob(os.path.join(OUTPUT_LOCATION, FILE_PATTERN))
@@ -110,23 +107,27 @@ def concatenate_parts():
         
         # Clean 'Response' column
         if "Response" in final_df.columns:
-            final_df["Response"] = final_df.apply(lambda row: f"Description: {row['EntryDescription']}\n{clean_response(row['Response'])}", axis=1)
+            final_df["Response"] = final_df.apply(lambda row: f"{row['EntryDescription']}\n{clean_response(row['Response'])}", axis=1)
         
-        # Remove 'Part' and 'EntryDescription' columns
-        final_df.drop(columns=["Part", "EntryDescription"], inplace=True, errors='ignore')
+        # Remove 'Part', 'EntryDescription', and 'UniqueID' columns
+        final_df.drop(columns=["Part", "EntryDescription", "UniqueID"], inplace=True, errors='ignore')
         
         # Recombine entries with the same Unique ID
         if "UniqueID" in final_df.columns:
             final_df = final_df.groupby("UniqueID", as_index=False).agg({
-                "EntryDate": "first",  # Keep the first date
-                "EntryOriginal": "first",  # Keep the first original entry
-                "Response": lambda x: "\n" + "\n".join(x.dropna().str.strip()).lstrip("\n") if not x.empty else "",  # Remove leading newline
-                "Handwritten": "first",  # Keep the first handwritten value
-                "TimeProcessed": "first"  # Keep the first processed time
+                "EntryDate": "first",
+                "Source Doc": "first",
+                "EntryOriginal": "first",
+                "Response": lambda x: "\n" + "\n".join(x.dropna().str.strip()).lstrip("\n") if not x.empty else "",
+                "Handwritten": "first",
+                "TimeProcessed": "first"
             })
         
-        # Reorder columns for better readability
-        final_df = final_df[["UniqueID", "EntryDate", "EntryOriginal", "Response", "Handwritten", "TimeProcessed"]]
+        # Drop 'UniqueID' before saving
+        final_df.drop(columns=["UniqueID"], inplace=True, errors='ignore')
+
+        # Define final column order (without UniqueID)
+        final_df = final_df[["Source Doc", "EntryDate", "EntryOriginal", "Response", "Handwritten", "TimeProcessed"]]
         
         # Save as Excel for better formatting
         final_filename = os.path.join(OUTPUT_LOCATION, f"{courtbook_id}_chronology.xlsx")
@@ -137,7 +138,6 @@ def concatenate_parts():
         
         # Log summary
         logging.info(f"Final file saved: {final_filename} ({len(final_df)} unique entries processed)")
-    
-
+ 
 if __name__ == "__main__":
     concatenate_parts()

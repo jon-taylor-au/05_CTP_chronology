@@ -570,6 +570,3 @@ If you’d like to improve or extend this project:
 2. Create a new branch.
 3. Submit a pull request.
 
-## License
-This project is licensed under [Your Preferred License].
-

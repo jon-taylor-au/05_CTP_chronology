@@ -33,7 +33,6 @@ def extract_first_line(text, max_length=80):
     
     return "-"
 
-
 def split_text_into_parts(text, num_parts):
     """Splits text into roughly equal parts, keeping sentence integrity if possible."""
     words = text.split()  # Tokenize by words
@@ -48,19 +47,19 @@ def split_text_into_parts(text, num_parts):
     
     return parts
 
-def parse_data(data):
-    """Processes API response into structured rows for CSV output, including split text parts."""
+def parse_data(data, book_item_lookup):
+    """Processes API response into structured rows for CSV output, including book item descriptions."""
     rows = []
-    index_counter = 0  # Initialize the index counter
+    index_counter = 0
     TOKEN_LIMIT = 3500  # Max tokens per part
 
     for entry in data:
         handwritten = entry.get("handwritten", "").strip().lower()
         relevant = entry.get("relevant", "").strip()
+        book_item_id = str(entry.get("bookItemId"))  # Convert to string for lookup
 
-        # Only process if Handwritten == "false" and Relevant == "Relevant"
-        if handwritten != "false" or relevant != "Relevant":
-            continue  # Skip this entry
+        # Lookup description from book items
+        book_item_description = book_item_lookup.get(book_item_id, "-")  
 
         try:
             entry_date = datetime.fromtimestamp(entry.get("entryDate", 0) / 1000)
@@ -72,53 +71,94 @@ def parse_data(data):
         word_count = len(entry_original.split())  # Count words
         token_count = int(round(word_count * 1.3))  # Estimate token count
 
-        # Generate a unique ID for the original entry (before splitting)
+        # Generate a unique ID for the original entry
         unique_id = str(uuid.uuid4())
 
-        # Determine the number of parts needed
-        num_parts = max(1, -(-token_count // TOKEN_LIMIT))  # Equivalent to math.ceil(token_count / TOKEN_LIMIT)
-
-        # Split `Entry_Original` into multiple parts
-        entry_parts = split_text_into_parts(entry_original, num_parts)
-
-        # Create rows for each part
-        for part_index, part_text in enumerate(entry_parts, start=1):
+        if handwritten == "true":
             rows.append({
-                "Index": index_counter,  # Incremental index
-                "Unique ID": unique_id,  # Same ID for all parts of an entry
+                "Index": index_counter,
+                "Unique ID": unique_id,
                 "First Line": first_line,
                 "Court Book ID": entry.get("courtBookId"),
-                "Book Item ID": entry.get("bookItemId"),
+                "Book Item ID": book_item_id,
+                "Book Item Description": book_item_description, 
                 "Entry Date": entry_date,
-                "PromptID": 1,
-                "Entry_Original": part_text,  # Now only contains part of the text
-                "Token Count": token_count,  # Same total token count
-                "Part": f"Part {part_index}/{num_parts}",  # "Part 1/3",
+                "PromptID": None,
+                "Entry_Original": entry_original,
+                "Token Count": 0,
+                "Part": "Part 1/1",
                 "Handwritten": handwritten,
                 "Relevant": relevant,
-                "Entry Description": first_line if first_line.isupper() else "-"
+                "Entry Description": first_line if first_line.isupper() else "-",
+                "Response": "** handwritten **"
             })
-            index_counter += 1  # Increment index for each split part
+            index_counter += 1
+            continue
+
+        if handwritten == "false" and relevant == "Relevant":
+            num_parts = max(1, -(-token_count // TOKEN_LIMIT))  # Equivalent to math.ceil(token_count / TOKEN_LIMIT)
+            entry_parts = split_text_into_parts(entry_original, num_parts)
+
+            for part_index, part_text in enumerate(entry_parts, start=1):
+                rows.append({
+                    "Index": index_counter,
+                    "Unique ID": unique_id,
+                    "First Line": first_line,
+                    "Court Book ID": entry.get("courtBookId"),
+                    "Book Item ID": book_item_id,
+                    "Book Item Description": book_item_description,  # New field
+                    "Entry Date": entry_date,
+                    "PromptID": 1,
+                    "Entry_Original": part_text,
+                    "Token Count": token_count,
+                    "Part": f"Part {part_index}/{num_parts}",
+                    "Handwritten": handwritten,
+                    "Relevant": relevant,
+                    "Entry Description": first_line if first_line.isupper() else "-",
+                    "Response": None
+                })
+                index_counter += 1
 
     return rows
-
-
 
 def save_to_csv(rows, court_book_id):
     """Saves processed data to a CSV file."""
     filename = os.path.join(OUTPUT_LOCATION, f"{court_book_id}_courtbook.csv")
     df = pd.DataFrame(rows)
-    # reorder the columns so Index is the first column
-    cols = ["Index", "Unique ID","Part", "First Line", "Handwritten","Relevant","Court Book ID", "Book Item ID", "Entry Date", "PromptID", "Entry_Original","Token Count", "Entry Description"]
+    
+    # Reorder columns to include the new field
+    cols = ["Index", "Unique ID", "Part", "First Line", "Handwritten", "Relevant",
+            "Court Book ID", "Book Item ID", "Book Item Description",  # New field
+            "Entry Date", "PromptID", "Entry_Original", "Token Count", "Entry Description"]
+    
     df = df[cols]
     df.to_csv(filename, index=False)
     print(f"CSV file successfully saved: {filename}")
 
 def process_court_book(client, court_book_id):
-    """Fetches court book data and writes it to CSV."""
+    """Fetches court book data, retrieves book item descriptions, and writes to CSV."""
+    
+    # Fetch book item descriptions
+    book_item_lookup = fetch_book_items(client, court_book_id)
+    
+    # Fetch chronology data
     response_data = client.fetch_api_data(f"/sparke/api/v0/books/{court_book_id}/chronology/")
-    rows = parse_data(response_data)
+    
+    # Parse data with book item lookup
+    rows = parse_data(response_data, book_item_lookup)
+    
+    # Save output
     save_to_csv(rows, court_book_id)
+
+def fetch_book_items(client, court_book_id):
+    """Fetch book item descriptions from the new endpoint."""
+    url = f"/sparke/api/v0/books/{court_book_id}/chronology/bookitems/"
+    response_data = client.fetch_api_data(url)
+
+    # Create a lookup dictionary {id: description}
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+    
+    return book_item_lookup
 
 def main():
     """Main function to process court books from the CSV file."""
