@@ -55,6 +55,13 @@ def parse_data(data):
     TOKEN_LIMIT = 3500  # Max tokens per part
 
     for entry in data:
+        handwritten = entry.get("handwritten", "").strip().lower()
+        relevant = entry.get("relevant", "").strip()
+
+        # Only process if Handwritten == "false" and Relevant == "Relevant"
+        if handwritten != "false" or relevant != "Relevant":
+            continue  # Skip this entry
+
         try:
             entry_date = datetime.fromtimestamp(entry.get("entryDate", 0) / 1000)
         except Exception:
@@ -64,7 +71,7 @@ def parse_data(data):
         first_line = extract_first_line(entry.get("entryFinal", ""))
         word_count = len(entry_original.split())  # Count words
         token_count = int(round(word_count * 1.3))  # Estimate token count
-        
+
         # Generate a unique ID for the original entry (before splitting)
         unique_id = str(uuid.uuid4())
 
@@ -87,7 +94,8 @@ def parse_data(data):
                 "Entry_Original": part_text,  # Now only contains part of the text
                 "Token Count": token_count,  # Same total token count
                 "Part": f"Part {part_index}/{num_parts}",  # "Part 1/3",
-                "Handwritten": entry.get("handwritten"),
+                "Handwritten": handwritten,
+                "Relevant": relevant,
                 "Entry Description": first_line if first_line.isupper() else "-"
             })
             index_counter += 1  # Increment index for each split part
@@ -95,12 +103,13 @@ def parse_data(data):
     return rows
 
 
+
 def save_to_csv(rows, court_book_id):
     """Saves processed data to a CSV file."""
     filename = os.path.join(OUTPUT_LOCATION, f"{court_book_id}_courtbook.csv")
     df = pd.DataFrame(rows)
     # reorder the columns so Index is the first column
-    cols = ["Index", "Unique ID","Part", "First Line", "Handwritten","Court Book ID", "Book Item ID", "Entry Date", "PromptID", "Entry_Original","Token Count", "Entry Description"]
+    cols = ["Index", "Unique ID","Part", "First Line", "Handwritten","Relevant","Court Book ID", "Book Item ID", "Entry Date", "PromptID", "Entry_Original","Token Count", "Entry Description"]
     df = df[cols]
     df.to_csv(filename, index=False)
     print(f"CSV file successfully saved: {filename}")

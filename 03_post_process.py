@@ -3,6 +3,9 @@ import glob
 import os
 import logging
 import re
+from openpyxl import load_workbook
+from openpyxl.styles import Alignment
+from openpyxl.worksheet.table import Table, TableStyleInfo
 
 # Constants
 OUTPUT_LOCATION = "outputs/"  # Folder containing part files
@@ -26,20 +29,63 @@ def clean_response(text):
     # Remove unwanted bullet points
     lines = text.split("\n")
     cleaned_lines = [
-        line for line in lines
-        if not line.startswith("BrewChat")
-        and "XML" not in line
-        and not line.startswith("Dates are answered in the format")
+        line.strip() for line in lines  # Remove leading/trailing whitespace
+        if line.strip() and  # Skip empty lines
+        not line.startswith("BrewChat") and
+        "XML" not in line and
+        not line.startswith("Dates are answered in the format")
     ]
     
     # Replace "â€¢" with "*"
-    cleaned_text = "\n".join(cleaned_lines).replace("â€¢", "*")
+    cleaned_text = "\n".join(["\t" + line for line in cleaned_lines]).replace("â€¢", "*")  # Add tab indentation to each line
     
-    return cleaned_text
+    return cleaned_text.strip()  # Ensure no leading/trailing whitespace
+
+
+def format_excel(file_path):
+    """Applies formatting to the final Excel file."""
+    wb = load_workbook(file_path)
+    ws = wb.active
+    
+    # Freeze the top row
+    ws.freeze_panes = "A2"
+    
+    # Auto adjust column widths for all except fixed-width columns
+    for col in ws.columns:
+        max_length = 0
+        col_letter = col[0].column_letter
+        if col_letter not in ["C", "D"]:  # Skipping "EntryOriginal" and "Response"
+            for cell in col:
+                try:
+                    if cell.value:
+                        max_length = max(max_length, len(str(cell.value)))
+                except:
+                    pass
+            ws.column_dimensions[col_letter].width = max_length + 2
+    
+    # Set fixed widths for specific columns
+    ws.column_dimensions["C"].width = 30  # EntryOriginal column
+    ws.column_dimensions["D"].width = 100  # Response column (adjusted to fit description + response content)
+    
+    # Wrap text in Response column
+    for cell in ws["D"]:
+        cell.alignment = Alignment(wrap_text=True)
+    
+    # Format as table
+    table = Table(displayName="CourtBookData", ref=ws.dimensions)
+    style = TableStyleInfo(name="TableStyleMedium9", showFirstColumn=False,
+                           showLastColumn=False, showRowStripes=True, showColumnStripes=False)
+    table.tableStyleInfo = style
+    ws.add_table(table)
+    
+    # Hide gridlines
+    ws.sheet_view.showGridLines = False
+    
+    wb.save(file_path)
 
 
 def concatenate_parts():
-    """Concatenates all part CSV files into a single final CSV per court book and recombines entries with the same Unique ID."""
+    """Concatenates all part CSV files into a single final Excel file per court book and recombines entries with the same Unique ID."""
     part_files = glob.glob(os.path.join(OUTPUT_LOCATION, FILE_PATTERN))
     
     if not part_files:
@@ -64,27 +110,33 @@ def concatenate_parts():
         
         # Clean 'Response' column
         if "Response" in final_df.columns:
-            final_df["Response"] = final_df["Response"].apply(clean_response)
+            final_df["Response"] = final_df.apply(lambda row: f"Description: {row['EntryDescription']}\n{clean_response(row['Response'])}", axis=1)
         
-        # Remove 'Part' column
-        if "Part" in final_df.columns:
-            final_df.drop(columns=["Part"], inplace=True)
+        # Remove 'Part' and 'EntryDescription' columns
+        final_df.drop(columns=["Part", "EntryDescription"], inplace=True, errors='ignore')
         
         # Recombine entries with the same Unique ID
         if "UniqueID" in final_df.columns:
             final_df = final_df.groupby("UniqueID", as_index=False).agg({
                 "EntryDate": "first",  # Keep the first date
-                "EntryDescription": "first",  # Keep the first description
                 "EntryOriginal": "first",  # Keep the first original entry
-                "Response": " \n".join,  # Concatenate responses
+                "Response": lambda x: "\n" + "\n".join(x.dropna().str.strip()).lstrip("\n") if not x.empty else "",  # Remove leading newline
                 "Handwritten": "first",  # Keep the first handwritten value
                 "TimeProcessed": "first"  # Keep the first processed time
             })
         
-        # Save the merged file
-        final_filename = os.path.join(OUTPUT_LOCATION, f"{courtbook_id}_chronology.csv")
-        final_df.to_csv(final_filename, index=False)
-        logging.info(f"Saved merged file: {final_filename}")
+        # Reorder columns for better readability
+        final_df = final_df[["UniqueID", "EntryDate", "EntryOriginal", "Response", "Handwritten", "TimeProcessed"]]
+        
+        # Save as Excel for better formatting
+        final_filename = os.path.join(OUTPUT_LOCATION, f"{courtbook_id}_chronology.xlsx")
+        final_df.to_excel(final_filename, index=False, engine="openpyxl")
+        
+        # Apply Excel formatting
+        format_excel(final_filename)
+        
+        # Log summary
+        logging.info(f"Final file saved: {final_filename} ({len(final_df)} unique entries processed)")
     
 
 if __name__ == "__main__":
