@@ -37,11 +37,54 @@ class APIClient:
         return response.status_code == 200
 
     def fetch_api_data(self, endpoint):
-        """Fetch data from the specified API endpoint."""
+        """Fetch data from the specified API endpoint with better error handling."""
         url = f"{self.base_url}{endpoint}"
         headers = {"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
-        response = self.session.get(url, headers=headers)
-        return response.json()
+        
+        try:
+            response = self.session.get(url, headers=headers, timeout=10)
+            
+            # Print raw response for debugging
+            print(f"🔍 API Response (Status {response.status_code})")  
+
+            # Handle non-200 responses
+            if response.status_code != 200:
+                print(f"⚠️ API request failed: {response.status_code} - {response.text}")
+                return None
+
+            # Handle empty response
+            if not response.text.strip():
+                print("⚠️ Warning: API response is empty.")
+                return None
+            
+            return response.json()  # Attempt to parse JSON
+        
+        except requests.exceptions.RequestException as e:
+            print(f"❌ API request error: {e}")
+            return None
+        except requests.exceptions.JSONDecodeError:
+            print(f"❌ JSON decode error: Response is not valid JSON. Raw response: {response.text}")
+            return None
+
+    def send_put_request(self, endpoint, data):
+        """Sends a PUT request with JSON data to the specified API endpoint."""
+        url = f"{self.base_url}{endpoint}"
+        headers = {
+            "User-Agent": "Mozilla/5.0",
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+        
+        try:
+            response = self.session.put(url, json=data, headers=headers, timeout=10)
+            if response.status_code in [200, 201]:
+                print(f"✅ PUT request successful: {response.status_code}")
+            else:
+                print(f"❌ PUT request failed: {response.status_code} - {response.text}")
+            return response
+        except requests.exceptions.RequestException as e:
+            print(f"❌ Error sending PUT request: {e}")
+            return None
 
     @staticmethod
     def clean_html(html_content):
@@ -53,4 +96,3 @@ class APIClient:
         text = unescape(soup.get_text(separator=" ", strip=True))
         
         return text if text else ""  # Ensure we never return None
-

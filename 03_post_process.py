@@ -6,6 +6,8 @@ import re
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 from openpyxl.worksheet.table import Table, TableStyleInfo
+from openpyxl.formatting.rule import CellIsRule, FormulaRule
+from openpyxl.styles import PatternFill
 
 # Constants
 OUTPUT_LOCATION = "outputs/"  # Folder containing part files
@@ -40,14 +42,17 @@ def clean_response(text):
     
     return cleaned_text.strip()  # Ensure no leading/trailing whitespace
 
+from openpyxl.formatting.rule import CellIsRule, FormulaRule
+from openpyxl.styles import PatternFill
+
 def format_excel(file_path):
-    """Applies formatting to the final Excel file."""
+    """Applies formatting to the final Excel file, including conditional formatting for the 'Response' column."""
     wb = load_workbook(file_path)
     ws = wb.active
-    
+
     # Freeze the top row
     ws.freeze_panes = "A2"
-    
+
     # Auto adjust column widths for all except fixed-width columns
     for col in ws.columns:
         max_length = 0
@@ -60,26 +65,43 @@ def format_excel(file_path):
                 except:
                     pass
             ws.column_dimensions[col_letter].width = max_length + 2
-    
+
     # Set fixed widths for specific columns
     ws.column_dimensions["C"].width = 30  # EntryOriginal column
     ws.column_dimensions["D"].width = 100  # Response column (adjusted to fit description + response content)
-    
+
     # Wrap text in Response column
     for cell in ws["D"]:
         cell.alignment = Alignment(wrap_text=True)
-    
+
+    # Conditional Formatting for "Response" column
+    response_col = "D2:D" + str(ws.max_row)  # Target all cells in column E, starting from row 2
+
+    # Define color fills
+    red_fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")  # Light Red
+    yellow_fill = PatternFill(start_color="FFEB9C", end_color="FFEB9C", fill_type="solid")  # Light Yellow
+    #green_fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")  # Light Green
+
+    # Apply conditional formatting based on words
+    ws.conditional_formatting.add(response_col, 
+        FormulaRule(formula=[f'ISNUMBER(SEARCH("inconclusive", D2))'], stopIfTrue=True, fill=red_fill))
+    ws.conditional_formatting.add(response_col, 
+        FormulaRule(formula=[f'ISNUMBER(SEARCH("handwritten", D2))'], stopIfTrue=True, fill=yellow_fill))
+    #ws.conditional_formatting.add(response_col, 
+        #FormulaRule(formula=[f'ISNUMBER(SEARCH("success", E2))'], stopIfTrue=True, fill=green_fill))
+
     # Format as table
     table = Table(displayName="CourtBookData", ref=ws.dimensions)
     style = TableStyleInfo(name="TableStyleMedium9", showFirstColumn=False,
                            showLastColumn=False, showRowStripes=True, showColumnStripes=False)
     table.tableStyleInfo = style
     ws.add_table(table)
-    
+
     # Hide gridlines
     ws.sheet_view.showGridLines = False
-    
+
     wb.save(file_path)
+
 
 def concatenate_parts():
     """Concatenates all part CSV files into a single final Excel file per court book and recombines entries with the same Unique ID."""
@@ -127,7 +149,7 @@ def concatenate_parts():
         final_df.drop(columns=["UniqueID"], inplace=True, errors='ignore')
 
         # Define final column order (without UniqueID)
-        final_df = final_df[["Source Doc", "EntryDate", "EntryOriginal", "Response", "Handwritten", "TimeProcessed"]]
+        final_df = final_df[["Source Doc", "EntryDate", "EntryOriginal", "Response", "Handwritten", "TimeProcessed","LineID"]]
         
         # Save as Excel for better formatting
         final_filename = os.path.join(OUTPUT_LOCATION, f"{courtbook_id}_chronology.xlsx")

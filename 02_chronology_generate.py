@@ -75,7 +75,7 @@ def process_courtbook_file(input_file, prompt_file, output_prefix):
 
     try:
         df = pd.read_csv(input_file)
-        required_input_columns = {"Unique ID", "Part", "Entry Date", "Entry Description", "Entry_Original", "PromptID", "Handwritten"}
+        required_input_columns = {"Unique ID", "Line ID","Part", "Entry Date", "Entry Description", "Entry_Original", "PromptID", "Handwritten"}
         if not required_input_columns.issubset(df.columns):
             missing = required_input_columns - set(df.columns)
             logging.error(f"Input file {input_file} missing required columns: {missing}")
@@ -111,6 +111,7 @@ def process_courtbook_file(input_file, prompt_file, output_prefix):
                 original = row["Entry_Original"]
                 prompt_id = row["PromptID"]
                 unique_id = row.get("Unique ID", "-")
+                line_id = row.get("Line ID", "-")
                 part_no = row.get("Part", "-")
                 handwritten = str(row.get("Handwritten", "false")).strip().lower()  # Ensure lowercase string comparison
                 book_item_desc = row.get("Book Item Description", "-")
@@ -126,19 +127,17 @@ def process_courtbook_file(input_file, prompt_file, output_prefix):
                     response = process_row(original, prompt_text)
 
                 timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                results.append([unique_id, book_item_desc, part_no, entry_date, entry_description, original, response, handwritten, timestamp])
+                results.append([unique_id, line_id,book_item_desc, part_no, entry_date, entry_description, original, response, handwritten, timestamp])
 
             # Save batch results to CSV
             part_filename = output_prefix.replace("chronology.csv", f"part{part + 1}.csv")
-            output_df = pd.DataFrame(results, columns=["UniqueID", "Source Doc", "PartNo", "EntryDate", "EntryDescription", "EntryOriginal", "Response", "Handwritten", "TimeProcessed"])
+            output_df = pd.DataFrame(results, columns=["UniqueID","LineID", "Source Doc", "PartNo", "EntryDate", "EntryDescription", "EntryOriginal", "Response", "Handwritten", "TimeProcessed"])
             output_df.to_csv(part_filename, index=False)
 
             logging.info(f"Saved batch {part + 1} to {part_filename}")
 
     except Exception as e:
         logging.error(f"Unexpected error processing {input_file}: {e}")
-
-
 
 # --- Main Processing ---
 llm_client = LLMClient()

@@ -9,6 +9,7 @@ import uuid
 
 # Constants
 BASE_URL = "http://sydwebdev139:8080"
+#BASE_URL = "http://sydwebdev039:8080" #RTWSA URL
 LOGIN_PAGE_URL = f"{BASE_URL}/sparke/authed/user.action?cmd=welcome"
 LOGIN_URL = f"{BASE_URL}/sparke/authed/j_security_check"
 CSV_FILE = '00_courtbooks_to_get.csv'
@@ -57,6 +58,7 @@ def parse_data(data, book_item_lookup):
         handwritten = entry.get("handwritten", "").strip().lower()
         relevant = entry.get("relevant", "").strip()
         book_item_id = str(entry.get("bookItemId"))  # Convert to string for lookup
+        id = str(entry.get("id"))  # Convert to string for lookup
 
         # Lookup description from book items
         book_item_description = book_item_lookup.get(book_item_id, "-")  
@@ -67,6 +69,7 @@ def parse_data(data, book_item_lookup):
             entry_date = "Invalid timestamp"
 
         entry_original = APIClient.clean_html(entry.get("entryOriginal", ""))
+        entry_modified = APIClient.clean_html(entry.get("entryFinal", ""))
         first_line = extract_first_line(entry.get("entryFinal", ""))
         word_count = len(entry_original.split())  # Count words
         token_count = int(round(word_count * 1.3))  # Estimate token count
@@ -81,10 +84,12 @@ def parse_data(data, book_item_lookup):
                 "First Line": first_line,
                 "Court Book ID": entry.get("courtBookId"),
                 "Book Item ID": book_item_id,
+                "Line ID": id,
                 "Book Item Description": book_item_description, 
                 "Entry Date": entry_date,
                 "PromptID": None,
                 "Entry_Original": entry_original,
+                "Entry_Modified": entry_modified,
                 "Token Count": 0,
                 "Part": "Part 1/1",
                 "Handwritten": handwritten,
@@ -106,10 +111,12 @@ def parse_data(data, book_item_lookup):
                     "First Line": first_line,
                     "Court Book ID": entry.get("courtBookId"),
                     "Book Item ID": book_item_id,
+                    "Line ID": id,
                     "Book Item Description": book_item_description,  # New field
                     "Entry Date": entry_date,
                     "PromptID": 1,
                     "Entry_Original": part_text,
+                    "Entry_Modified": entry_modified,
                     "Token Count": token_count,
                     "Part": f"Part {part_index}/{num_parts}",
                     "Handwritten": handwritten,
@@ -128,8 +135,8 @@ def save_to_csv(rows, court_book_id):
     
     # Reorder columns to include the new field
     cols = ["Index", "Unique ID", "Part", "First Line", "Handwritten", "Relevant",
-            "Court Book ID", "Book Item ID", "Book Item Description",  # New field
-            "Entry Date", "PromptID", "Entry_Original", "Token Count", "Entry Description"]
+            "Court Book ID", "Book Item ID","Line ID", "Book Item Description", 
+            "Entry Date", "PromptID", "Entry_Original", "Entry_Modified","Token Count", "Entry Description"]
     
     df = df[cols]
     df.to_csv(filename, index=False)
