@@ -5,7 +5,7 @@ secrets.json
 outputs/
 files/
 archived/
-archive/
+archives/
 *courtbook.csv
 *chronology*.csv
 *debug*
