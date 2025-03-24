@@ -9,7 +9,6 @@ import uuid
 
 # Constants
 BASE_URL = "http://sydwebdev139:8080"
-#BASE_URL = "http://sydwebdev039:8080" #RTWSA URL
 LOGIN_PAGE_URL = f"{BASE_URL}/sparke/authed/user.action?cmd=welcome"
 LOGIN_URL = f"{BASE_URL}/sparke/authed/j_security_check"
 CSV_FILE = '00_courtbooks_to_get.csv'

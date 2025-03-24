@@ -4,6 +4,8 @@ import csv
 import pandas as pd
 from supporting_files.webapp_class import APIClient
 from bs4 import BeautifulSoup
+from datetime import datetime
+import re
 
 # Constants
 BASE_URL = "http://sydwebdev139:8080"
@@ -36,13 +38,47 @@ def fetch_court_book_data(client, court_book_id):
         print(f"⚠️ No data found for Court Book ID: {court_book_id}")
 
 def format_response(response, source_doc):
-    """Formats the response text."""
+    """Formats the response into structured semantic HTML."""
     if not isinstance(response, str) or not response.strip():
         return ""
-    lines = response.replace("\t", "").split("\n")
-    lines = [line.strip() for line in lines if line.strip()]
-    lines[0] = f"{source_doc}:"
-    return "\n".join([line for line in lines if line.lower() != "ai summary"]).strip()
+
+    # Clean the input text
+    response = response.replace("â€¢", "*").strip()
+
+    # Split into lines and clean each line
+    lines = response.split("\n")
+    bullet_lines = []
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        # Remove AI Summary if it's present anywhere
+        if "AI Summary" in line:
+            line = line.replace("AI Summary", "Generated Summary")
+            continue  # Or skip it altogether
+
+        # Remove leading bullet characters and whitespace
+        line = re.sub(r"^[\-\*•→\t\s]+", "", line)
+
+        if line:
+            bullet_lines.append(line)
+
+    # If nothing left, return empty
+    if not bullet_lines:
+        return ""
+    
+    doc_title = os.path.splitext(source_doc)[0]  # ← this strips the extension
+
+    # Build HTML
+    html_parts = [
+        f"<header><h2>{doc_title}</h2></header>",
+        "<ul>",
+    ]
+    html_parts.extend([f"<li>{line}</li>" for line in bullet_lines])
+    html_parts.append("</ul>")
+
+    return "".join(html_parts)
 
 def merge_json_data(source_data, response_data):
     """Merges source data with response data."""
@@ -75,21 +111,6 @@ def process_court_book(client, court_book_id):
     response_data = load_json(f"{court_book_id}_response_extract.json")
     merged_data = merge_json_data(source_data, response_data)
     save_json(merged_data, f"{court_book_id}_payload.json")
-    send_put_request(client, court_book_id, merged_data)
-
-def send_put_request(client, court_book_id, json_data):
-    """Asks for confirmation before sending a PUT request to update the court book."""
-    confirm = input(f"⚠️ >> About to overwrite data for Court Book ID {court_book_id}. Are you sure you want to proceed? (yes/no): ").strip().lower()
-    if confirm != 'yes':
-        print("❌ Operation cancelled by user.")
-        return
-    """Sends a PUT request to update the court book."""
-    url = f"/sparke/api/v0/books/{court_book_id}/chronology/"
-    response = client.send_put_request(url, json_data)
-    if response.status_code == 200:
-        print(f"✅ Successfully updated Court Book ID: {court_book_id}")
-    else:
-        print(f"❌ Failed to update Court Book ID: {court_book_id}. Status: {response.status_code}")
 
 def main():
     """Main function to handle all court books from the CSV file."""
