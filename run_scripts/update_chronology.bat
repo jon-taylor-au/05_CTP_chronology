@@ -18,6 +18,8 @@ echo ==================================================
 echo               CHRONOLOGY UPDATE TOOL
 echo ==================================================
 echo.
+echo ** Make sure win task CTP Chronology is running **
+echo.
 echo 0. Exit
 echo 1. Help - what does this tool do?
 echo 2. Update the chronology for a book

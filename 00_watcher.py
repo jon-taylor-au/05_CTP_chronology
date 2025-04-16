@@ -1,4 +1,4 @@
-## Start the windows task scheduler task "watcher" to run this script ##
+## REMEMBER!! Start the windows task scheduler task "CTP Watcher" to run this script ##
 import hashlib
 import time
 import subprocess
@@ -8,7 +8,7 @@ WATCH_FILE = r"\\V0050\05_CTP_chronology\00_courtbooks_to_get.csv"
 SCRIPT_TO_RUN = r"\\V0050\05_CTP_chronology\07_main.py"
 WATCHER_LOG = r"\\V0050\05_CTP_chronology\watcher.log"
 SCRIPT_LOG = r"\\V0050\05_CTP_chronology\07_main.log"
-POLL_INTERVAL = 30  # seconds
+POLL_INTERVAL = 15  # seconds
 
 def log(message):
     timestamp = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
