@@ -3,12 +3,14 @@ import glob
 import logging
 import shutil
 import zipfile
+import csv
 
 # Constants
-OUTPUT_LOCATION = "outputs/"  # Folder containing files to clean up
-ARCHIVE_LOCATION = "archives/"  # Folder for archived files
-FILE_PATTERN = "*_part*.csv"  # Pattern to match part files
-ZIP_FILENAME_TEMPLATE = "{court_book_id}_archived_outputs.zip"  # Name of the archive file
+CSV_FILE = "00_courtbooks_to_get.csv"
+OUTPUT_LOCATION = "outputs/"
+ARCHIVE_LOCATION = "run_scripts/processed/"
+FILE_PATTERN = "*_part*.csv"
+ZIP_FILENAME_TEMPLATE = "{court_book_id}_archived_outputs.zip"
 
 # Logging Configuration
 logging.basicConfig(
@@ -20,29 +22,28 @@ def zip_and_move_output(court_book_id):
     """Zips all files in OUTPUT_LOCATION and moves the zip file to ARCHIVE_LOCATION."""
     zip_filename = ZIP_FILENAME_TEMPLATE.format(court_book_id=court_book_id)
     zip_path = os.path.join(ARCHIVE_LOCATION, zip_filename)
-    
-    # Ensure archive directory exists
+
     os.makedirs(ARCHIVE_LOCATION, exist_ok=True)
-    
+
     with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for foldername, subfolders, filenames in os.walk(OUTPUT_LOCATION):
             if foldername.startswith(ARCHIVE_LOCATION):
-                continue  # Skip archiving the archive folder itself
+                continue
             for filename in filenames:
                 file_path = os.path.join(foldername, filename)
-                if file_path != zip_path:  # Avoid adding the zip file itself
+                if file_path != zip_path:
                     zipf.write(file_path, os.path.relpath(file_path, OUTPUT_LOCATION))
-    
-    logging.info(f"Zipped all output files and moved to {zip_path}")
+
+    logging.info(f"Zipped all output files for {court_book_id} → {zip_path}")
 
 def cleanup_part_files():
     """Deletes all CSV files with 'part' in the filename."""
     part_files = glob.glob(os.path.join(OUTPUT_LOCATION, FILE_PATTERN))
-    
+
     if not part_files:
         logging.info("No part files found for deletion.")
         return
-    
+
     for file in part_files:
         try:
             os.remove(file)
@@ -65,7 +66,14 @@ def delete_output_contents():
 
 if __name__ == "__main__":
     cleanup_part_files()
-    court_book_id = input("Enter Court Book ID for archive prefix: ").strip()
-    zip_and_move_output(court_book_id)
+
+    with open(CSV_FILE, newline="") as file:
+        reader = csv.reader(file)
+        next(reader)  # Skip header
+        for row in reader:
+            if not row or not row[0].strip():
+                continue
+            court_book_id = row[0].strip()
+            zip_and_move_output(court_book_id)
+
     delete_output_contents()
-    

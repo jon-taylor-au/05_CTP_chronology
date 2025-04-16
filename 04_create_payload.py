@@ -18,7 +18,7 @@ def save_json(data, filename):
     """Saves JSON data to a file."""
     with open(os.path.join(OUTPUT_LOCATION, filename), "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
-    print(f"✅ JSON file saved: {filename}")
+    print(f"JSON file saved: {filename}")
 
 def load_json(filename):
     """Loads JSON data from a file."""
@@ -26,7 +26,7 @@ def load_json(filename):
         with open(os.path.join(OUTPUT_LOCATION, filename), "r", encoding="utf-8") as file:
             return json.load(file)
     except Exception as e:
-        print(f"⚠️ Error loading {filename}: {e}")
+        print(f"Error loading {filename}: {e}")
         return []
 
 def fetch_court_book_data(client, court_book_id):
@@ -35,7 +35,7 @@ def fetch_court_book_data(client, court_book_id):
     if response:
         save_json(response, f"{court_book_id}_source_extract.json")
     else:
-        print(f"⚠️ No data found for Court Book ID: {court_book_id}")
+        print(f"No data found for Court Book ID: {court_book_id}")
 
 def format_response(response, source_doc):
     """Formats the response into structured semantic HTML."""
@@ -99,13 +99,13 @@ def process_court_book(client, court_book_id):
         df = pd.read_excel(input_xlsx, dtype=str)
         required_columns = {"Response", "LineID", "Source Doc"}
         if not required_columns.issubset(df.columns):
-            print(f"⚠️ Missing required columns in {input_xlsx}")
+            print(f"Missing required columns in {input_xlsx}")
             return
         df["Response"] = df.apply(lambda row: format_response(row["Response"], row["Source Doc"]), axis=1)
         extracted_df = df[["LineID", "Response"]]
         save_json(extracted_df.to_dict(orient="records"), output_json)
     except Exception as e:
-        print(f"⚠️ Error processing {input_xlsx}: {e}")
+        print(f"Error processing {input_xlsx}: {e}")
     
     source_data = load_json(f"{court_book_id}_source_extract.json")
     response_data = load_json(f"{court_book_id}_response_extract.json")
@@ -116,14 +116,17 @@ def main():
     """Main function to handle all court books from the CSV file."""
     client = APIClient(BASE_URL, LOGIN_PAGE_URL, LOGIN_URL)
     if not client.authenticate():
-        print("❌ Authentication failed. Exiting.")
+        print("Authentication failed. Exiting.")
         return
+
     with open(CSV_FILE, newline="") as file:
         reader = csv.reader(file)
-        next(reader)
+        next(reader)  # skip header
         for row in reader:
-            for court_book_id in row:
-                process_court_book(client, court_book_id.strip())
+            if not row or not row[0].strip():
+                continue
+            court_book_id = row[0].strip()
+            process_court_book(client, court_book_id)
 
 if __name__ == "__main__":
     main()

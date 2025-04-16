@@ -1,0 +1,312 @@
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 12:43:09,864 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 12:43:09,895 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 12:43:09,895 - INFO - Restarting API client to prevent session issues.
+2025-04-16 12:43:17,474 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 12:43:19,703 - INFO - Merging 1 parts for court book 11602
+2025-04-16 12:43:19,789 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 12:43:23,692 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 12:43:23,739 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 12:43:23,739 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 12:43:23,739 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 12:43:23,739 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 12:43:23,755 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 12:43:23,755 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 12:43:23,755 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 29, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 12:45:39,586 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 12:45:39,637 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 12:45:39,646 - INFO - Restarting API client to prevent session issues.
+2025-04-16 12:45:46,581 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 12:45:49,052 - INFO - Merging 1 parts for court book 11602
+2025-04-16 12:45:49,146 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 12:45:53,005 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 12:45:53,037 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 12:45:53,037 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 12:45:53,052 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 12:45:53,052 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 12:45:53,052 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 12:45:53,052 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 12:45:53,068 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 12:51:03,132 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 12:51:03,147 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 12:51:03,147 - INFO - Restarting API client to prevent session issues.
+2025-04-16 12:51:12,652 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 12:51:15,210 - INFO - Merging 1 parts for court book 11602
+2025-04-16 12:51:15,319 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 12:51:19,491 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 12:51:19,522 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 12:51:19,522 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 12:51:19,538 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 12:51:19,538 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 12:51:19,538 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 12:51:19,551 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 12:51:19,551 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 12:52:41,226 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 12:52:41,242 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 12:52:41,242 - INFO - Restarting API client to prevent session issues.
+2025-04-16 12:52:50,399 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 12:52:52,851 - INFO - Merging 1 parts for court book 11602
+2025-04-16 12:52:52,929 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 12:52:56,710 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 12:52:56,742 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 12:52:56,757 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 12:52:56,757 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 12:52:56,773 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 12:52:56,773 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 12:52:56,773 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 12:52:56,773 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 12:58:48,917 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 12:58:48,933 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 12:58:48,946 - INFO - Restarting API client to prevent session issues.
+2025-04-16 12:58:57,681 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 12:59:00,212 - INFO - Merging 1 parts for court book 11602
+2025-04-16 12:59:00,306 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 12:59:04,212 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 12:59:04,243 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 12:59:04,243 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 12:59:04,259 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 12:59:04,259 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 12:59:04,259 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 12:59:04,259 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 12:59:04,275 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 13:04:32,276 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 13:04:32,291 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 13:04:32,307 - INFO - Restarting API client to prevent session issues.
+2025-04-16 13:04:39,012 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 13:04:41,314 - INFO - Merging 1 parts for court book 11602
+2025-04-16 13:04:41,440 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 13:04:45,510 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 13:04:45,542 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 13:04:45,542 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 13:04:45,557 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 13:04:45,557 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 13:04:45,557 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 13:04:45,557 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 13:04:45,573 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 13:10:29,822 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 13:10:29,840 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 13:10:29,841 - INFO - Restarting API client to prevent session issues.
+2025-04-16 13:10:36,935 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 13:10:39,168 - INFO - Merging 1 parts for court book 11602
+2025-04-16 13:10:39,257 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 13:10:43,371 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 13:10:43,402 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 13:10:43,418 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 13:10:43,418 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 13:10:43,418 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 13:10:43,418 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 13:10:43,433 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 13:10:43,433 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 13:18:38,482 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 13:18:38,498 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 13:18:38,498 - INFO - Restarting API client to prevent session issues.
+2025-04-16 13:18:45,289 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 13:18:47,904 - INFO - Merging 1 parts for court book 11602
+2025-04-16 13:18:47,998 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 13:18:51,951 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 13:18:51,998 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 13:18:51,998 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 13:18:51,998 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 13:18:51,998 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 13:18:52,014 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 13:18:52,014 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 13:18:52,014 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 13:24:02,265 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 13:24:02,296 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 13:24:02,296 - INFO - Restarting API client to prevent session issues.
+2025-04-16 13:24:10,234 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 13:24:12,775 - INFO - Merging 1 parts for court book 11602
+2025-04-16 13:24:12,853 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 13:24:17,062 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 13:24:17,109 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 13:24:17,109 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 13:24:17,124 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 13:24:17,124 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 13:24:17,124 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 13:24:17,124 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 13:24:17,140 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-16 14:05:14,680 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-16 14:05:14,711 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-16 14:05:14,711 - INFO - Restarting API client to prevent session issues.
+2025-04-16 14:05:20,186 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-16 14:05:22,992 - INFO - Merging 1 parts for court book 11602
+2025-04-16 14:05:23,070 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-16 14:05:26,899 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-16 14:05:27,023 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-16 14:05:27,023 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-16 14:05:27,023 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-16 14:05:27,039 - INFO - Deleted: outputs\11602_payload.json
+2025-04-16 14:05:27,039 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-16 14:05:27,039 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-16 14:05:27,039 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.

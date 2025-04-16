@@ -179,15 +179,19 @@ def main():
     with open(CSV_FILE, newline='') as file:
         reader = csv.reader(file)
         next(reader)  # Skip header
-        for row in reader:
-            for court_book_id in row:
-                court_book_id = court_book_id.strip()  # Ensure no extra spaces
-                expected_filename = f"{court_book_id}_courtbook.csv"
 
-                if expected_filename in existing_files:
-                    print(f"Skipping {court_book_id}; file exists.")
-                else:
-                    process_court_book(client, court_book_id)
+        for row in reader:
+            if not row or not row[0].strip():
+                continue  # skip empty rows
+
+            court_book_id = row[0].strip()
+            expected_filename = f"{court_book_id}_courtbook.csv"
+
+            if expected_filename in existing_files:
+                print(f"Skipping {court_book_id}; file exists.")
+            else:
+                process_court_book(client, court_book_id)
+
 
 if __name__ == "__main__":
     main()

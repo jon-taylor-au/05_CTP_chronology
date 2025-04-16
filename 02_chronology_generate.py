@@ -10,7 +10,7 @@ import csv
 # CONSTANTS
 OUTPUT_LOCATION = 'outputs/'  # Folder to save the output files
 SUPPORT_LOCATION = 'supporting_files/'  # Folder containing support files
-RECORDS_TO_PROCESS = 10  # Number of records to process in each file
+RECORDS_TO_PROCESS = 50  # Number of records to process in each file
 
 # --- Custom CSV Log Handler ---
 class CSVLogHandler(logging.Handler):
