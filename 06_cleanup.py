@@ -9,6 +9,7 @@ import csv
 CSV_FILE = "00_courtbooks_to_get.csv"
 OUTPUT_LOCATION = "outputs/"
 ARCHIVE_LOCATION = "run_scripts/processed/"
+PROGRESS_LOG = "run_scripts/progress.log"
 FILE_PATTERN = "*_part*.csv"
 ZIP_FILENAME_TEMPLATE = "{court_book_id}_archived_outputs.zip"
 
@@ -64,6 +65,15 @@ def delete_output_contents():
         except Exception as e:
             logging.error(f"Error deleting {file}: {e}")
 
+def clear_progress_log():
+    """Clears the contents of the progress log."""
+    try:
+        with open(PROGRESS_LOG, 'w', encoding='utf-8') as f:
+            f.write("")
+        logging.info("Progress log cleared.")
+    except Exception as e:
+        logging.error(f"Failed to clear progress log: {e}")
+
 if __name__ == "__main__":
     cleanup_part_files()
 
@@ -77,3 +87,4 @@ if __name__ == "__main__":
             zip_and_move_output(court_book_id)
 
     delete_output_contents()
+    clear_progress_log()

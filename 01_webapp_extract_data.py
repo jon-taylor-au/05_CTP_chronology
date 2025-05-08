@@ -6,6 +6,7 @@ from datetime import datetime
 from supporting_files.webapp_class import APIClient
 from bs4 import BeautifulSoup
 import uuid
+import concurrent.futures
 
 # Constants
 BASE_URL = "http://sydwebdev139:8080"
@@ -13,6 +14,13 @@ LOGIN_PAGE_URL = f"{BASE_URL}/sparke/authed/user.action?cmd=welcome"
 LOGIN_URL = f"{BASE_URL}/sparke/authed/j_security_check"
 CSV_FILE = '00_courtbooks_to_get.csv'
 OUTPUT_LOCATION = 'outputs/'
+PROGRESS_LOG = r"\\V0050\05_CTP_chronology\run_scripts\progress.log"
+
+def log_progress(message):
+    timestamp = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
+    with open(PROGRESS_LOG, "a", encoding="utf-8") as f:
+        f.write(f"{timestamp} {message}\n")
+
 
 def extract_first_line(text, max_length=80):
     """Extracts the first non-empty line of text from <p> tags in an HTML string and truncates it."""
@@ -171,9 +179,9 @@ def main():
     client = APIClient(BASE_URL, LOGIN_PAGE_URL, LOGIN_URL)
     if not client.authenticate():
         print("Authentication failed. Exiting.")
+        log_progress("❌ ERROR: Authentication failed. Exiting.")
         return
 
-    # Get the list of existing files
     existing_files = {os.path.basename(f) for f in glob.glob(os.path.join(OUTPUT_LOCATION, "*_courtbook.csv"))}
 
     with open(CSV_FILE, newline='') as file:
@@ -182,15 +190,24 @@ def main():
 
         for row in reader:
             if not row or not row[0].strip():
-                continue  # skip empty rows
+                continue
 
             court_book_id = row[0].strip()
             expected_filename = f"{court_book_id}_courtbook.csv"
 
             if expected_filename in existing_files:
                 print(f"Skipping {court_book_id}; file exists.")
+                log_progress(f"ℹ️ Skipping {court_book_id}; file already exists.")
             else:
-                process_court_book(client, court_book_id)
+                try:
+                    with concurrent.futures.ThreadPoolExecutor() as executor:
+                        future = executor.submit(process_court_book, client, court_book_id)
+                        future.result(timeout=30)
+                except concurrent.futures.TimeoutError:
+                    error_msg = f"❌ ERROR: Timed out processing court book ID {court_book_id} (over 30s)"
+                    print(error_msg)
+                    log_progress(error_msg)
+
 
 
 if __name__ == "__main__":

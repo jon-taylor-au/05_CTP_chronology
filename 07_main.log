@@ -1,0 +1,973 @@
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-17 15:13:21,302 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-17 15:13:21,327 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-17 15:13:21,333 - INFO - Restarting API client to prevent session issues.
+2025-04-17 15:13:31,941 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-17 15:13:36,701 - INFO - Merging 1 parts for court book 11602
+2025-04-17 15:13:36,857 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-17 15:13:44,805 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-17 15:13:44,881 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-17 15:13:44,888 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-17 15:13:44,893 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-17 15:13:44,898 - INFO - Deleted: outputs\11602_payload.json
+2025-04-17 15:13:44,903 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-17 15:13:44,906 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-17 15:13:44,910 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back turned off for now
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-17 15:17:15,542 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-17 15:17:15,560 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-17 15:17:15,564 - INFO - Restarting API client to prevent session issues.
+2025-04-17 15:17:24,824 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-17 15:17:28,400 - INFO - Merging 1 parts for court book 11602
+2025-04-17 15:17:28,543 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-17 15:17:35,719 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-17 15:17:35,778 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-17 15:17:35,793 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-17 15:17:35,798 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-17 15:17:35,803 - INFO - Deleted: outputs\11602_payload.json
+2025-04-17 15:17:35,811 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-17 15:17:35,815 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-17 15:17:35,821 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back turned off for now
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-17 15:18:14,385 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-17 15:18:14,410 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-17 15:18:14,415 - INFO - Restarting API client to prevent session issues.
+2025-04-17 15:18:21,514 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-17 15:18:26,122 - INFO - Merging 1 parts for court book 11602
+2025-04-17 15:18:26,313 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-17 15:18:32,451 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-17 15:18:32,501 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-17 15:18:32,510 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-17 15:18:32,515 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-17 15:18:32,522 - INFO - Deleted: outputs\11602_payload.json
+2025-04-17 15:18:32,526 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-17 15:18:32,532 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-17 15:18:32,536 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back turned off for now
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 29, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-17 15:24:17,030 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-17 15:24:17,054 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-17 15:24:17,059 - INFO - Restarting API client to prevent session issues.
+2025-04-17 15:24:27,370 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-17 15:24:30,661 - INFO - Merging 1 parts for court book 11602
+2025-04-17 15:24:30,802 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 401)
+API request failed: 401 - 
+No data found for Court Book ID: 00
+Error processing outputs/00_chronology.xlsx: [Errno 2] No such file or directory: 'outputs/00_chronology.xlsx'
+Error loading 00_source_extract.json: [Errno 2] No such file or directory: 'outputs/00_source_extract.json'
+Error loading 00_response_extract.json: [Errno 2] No such file or directory: 'outputs/00_response_extract.json'
+JSON file saved: 00_payload.json
+2025-04-17 15:24:35,474 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-17 15:24:35,513 - INFO - Zipped all output files for 00 \u2192 run_scripts/processed/00_archived_outputs.zip
+2025-04-17 15:24:35,518 - INFO - Deleted: outputs\00_payload.json
+2025-04-17 15:24:35,522 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-17 15:24:35,527 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-17 15:24:35,531 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back turned off for now
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 29, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-17 15:28:15,533 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-17 15:28:15,553 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-17 15:28:15,558 - INFO - Restarting API client to prevent session issues.
+2025-04-17 15:28:21,451 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-17 15:28:24,406 - INFO - Merging 1 parts for court book 11602
+2025-04-17 15:28:24,505 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-17 15:28:29,871 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-17 15:28:29,924 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-17 15:28:29,930 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-17 15:28:29,933 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-17 15:28:29,937 - INFO - Deleted: outputs\11602_payload.json
+2025-04-17 15:28:29,941 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-17 15:28:29,945 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-17 15:28:29,949 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back turned off for now
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 29, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-22 10:50:37,194 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-22 10:50:37,236 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-22 10:50:37,242 - INFO - Restarting API client to prevent session issues.
+2025-04-22 10:50:45,012 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-22 10:50:50,294 - INFO - Merging 1 parts for court book 11602
+2025-04-22 10:50:50,607 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-22 10:50:55,488 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-22 10:50:55,550 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-22 10:50:55,570 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-22 10:50:55,575 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-22 10:50:55,579 - INFO - Deleted: outputs\11602_payload.json
+2025-04-22 10:50:55,584 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-22 10:50:55,591 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-22 10:50:55,595 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back turned off for now
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 29, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 29, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-22 11:14:38,694 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-22 11:14:38,710 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-22 11:14:38,725 - INFO - Restarting API client to prevent session issues.
+2025-04-22 11:14:46,364 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-22 11:14:48,866 - INFO - Merging 1 parts for court book 11602
+2025-04-22 11:14:48,965 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+2025-04-22 11:14:53,865 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-22 11:14:53,918 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-22 11:14:53,925 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-22 11:14:53,929 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-22 11:14:53,932 - INFO - Deleted: outputs\11602_payload.json
+2025-04-22 11:14:53,936 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-22 11:14:53,940 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-22 11:14:53,943 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back turned off for now
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 29, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11705_courtbook.csv
+2025-04-28 11:22:07,065 - INFO - Processing file: outputs\11705_courtbook.csv (missing corresponding chronology file)
+2025-04-28 11:22:07,096 - INFO - Processing records 1 to 35 of 35 in outputs\11705_courtbook.csv
+2025-04-28 11:22:07,096 - INFO - Restarting API client to prevent session issues.
+2025-04-28 11:29:57,439 - INFO - Saved batch 1 to outputs\11705_part1.csv
+2025-04-28 11:30:00,391 - INFO - Merging 1 parts for court book 11705
+2025-04-28 11:30:00,610 - INFO - Final file saved: outputs/11705_chronology.xlsx (35 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11705_source_extract.json
+JSON file saved: 11705_response_extract.json
+JSON file saved: 11705_payload.json
+2025-04-28 11:30:04,939 - INFO - Deleted: outputs\11705_part1.csv
+2025-04-28 11:30:05,002 - INFO - Zipped all output files for 11705 \u2192 run_scripts/processed/11705_archived_outputs.zip
+2025-04-28 11:30:05,002 - INFO - Deleted: outputs\11705_chronology.xlsx
+2025-04-28 11:30:05,018 - INFO - Deleted: outputs\11705_courtbook.csv
+2025-04-28 11:30:05,018 - INFO - Deleted: outputs\11705_payload.json
+2025-04-28 11:30:05,018 - INFO - Deleted: outputs\11705_response_extract.json
+2025-04-28 11:30:05,018 - INFO - Deleted: outputs\11705_source_extract.json
+2025-04-28 11:30:05,033 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back turned off for now
+Step 6: Cleanup and finish
+All done.
+rror(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+Skipping 11705; file exists.
+2025-04-28 11:29:06,673 - INFO - Processing file: outputs\11705_courtbook.csv (missing corresponding chronology file)
+2025-04-28 11:29:06,702 - INFO - Processing records 1 to 35 of 35 in outputs\11705_courtbook.csv
+2025-04-28 11:29:06,702 - INFO - Restarting API client to prevent session issues.
+2025-04-28 11:37:22,548 - INFO - Saved batch 1 to outputs\11705_part1.csv
+2025-04-28 11:37:25,455 - INFO - Merging 1 parts for court book 11705
+2025-04-28 11:37:25,627 - INFO - Final file saved: outputs/11705_chronology.xlsx (35 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11705_source_extract.json
+JSON file saved: 11705_response_extract.json
+JSON file saved: 11705_payload.json
+2025-04-28 11:37:29,656 - INFO - Deleted: outputs\11705_part1.csv
+2025-04-28 11:37:29,741 - INFO - Zipped all output files for 11705 \u2192 run_scripts/processed/11705_archived_outputs.zip
+2025-04-28 11:37:29,750 - INFO - Deleted: outputs\11705_chronology.xlsx
+2025-04-28 11:37:29,753 - INFO - Deleted: outputs\11705_courtbook.csv
+2025-04-28 11:37:29,757 - INFO - Deleted: outputs\11705_payload.json
+2025-04-28 11:37:29,759 - INFO - Deleted: outputs\11705_response_extract.json
+2025-04-28 11:37:29,759 - INFO - Deleted: outputs\11705_source_extract.json
+2025-04-28 11:37:29,759 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back turned off for now
+Step 6: Cleanup and finish
+All done.
+rror(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11705_courtbook.csv
+2025-04-28 11:37:07,382 - INFO - Processing file: outputs\11705_courtbook.csv (missing corresponding chronology file)
+2025-04-28 11:37:07,398 - INFO - Processing records 1 to 35 of 35 in outputs\11705_courtbook.csv
+2025-04-28 11:37:07,415 - INFO - Restarting API client to prevent session issues.
+2025-04-28 11:49:40,313 - INFO - Saved batch 1 to outputs\11705_part1.csv
+2025-04-28 11:49:43,469 - INFO - Merging 1 parts for court book 11705
+2025-04-28 11:49:43,626 - INFO - Final file saved: outputs/11705_chronology.xlsx (35 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11705_source_extract.json
+JSON file saved: 11705_response_extract.json
+JSON file saved: 11705_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11705
+Payload loaded: 36 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11705
+2025-04-28 11:49:50,922 - INFO - Deleted: outputs\11705_part1.csv
+2025-04-28 11:49:50,985 - INFO - Zipped all output files for 11705 \u2192 run_scripts/processed/11705_archived_outputs.zip
+2025-04-28 11:49:50,985 - INFO - Deleted: outputs\11705_chronology.xlsx
+2025-04-28 11:49:50,985 - INFO - Deleted: outputs\11705_courtbook.csv
+2025-04-28 11:49:50,985 - INFO - Deleted: outputs\11705_payload.json
+2025-04-28 11:49:51,000 - INFO - Deleted: outputs\11705_response_extract.json
+2025-04-28 11:49:51,000 - INFO - Deleted: outputs\11705_source_extract.json
+2025-04-28 11:49:51,000 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11717_courtbook.csv
+2025-04-29 11:45:28,380 - INFO - Processing file: outputs\11717_courtbook.csv (missing corresponding chronology file)
+2025-04-29 11:45:28,411 - INFO - Processing records 1 to 50 of 85 in outputs\11717_courtbook.csv
+2025-04-29 11:45:28,422 - INFO - Restarting API client to prevent session issues.
+2025-04-29 11:55:47,669 - INFO - Saved batch 1 to outputs\11717_part1.csv
+2025-04-29 11:55:47,684 - INFO - Processing records 51 to 85 of 85 in outputs\11717_courtbook.csv
+2025-04-29 11:55:47,684 - INFO - Restarting API client to prevent session issues.
+2025-04-29 12:01:52,341 - INFO - Saved batch 2 to outputs\11717_part2.csv
+2025-04-29 12:01:56,731 - INFO - Merging 2 parts for court book 11717
+2025-04-29 12:01:57,050 - INFO - Final file saved: outputs/11717_chronology.xlsx (85 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11717_source_extract.json
+JSON file saved: 11717_response_extract.json
+JSON file saved: 11717_payload.json
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 400)
+API request failed: 400 - <!doctype html><html lang="en"><head><title>HTTP Status 400 – Bad Request</title><style type="text/css">H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}</style></head><body><h1>HTTP Status 400 – Bad Request</h1><hr class="line" /><p><b>Type</b> Status Report</p><p><b>Description</b> The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).</p><hr class="line" /><h3>Apache Tomcat/7.0.90</h3></body></html>
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 29, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11697_courtbook.csv
+2025-04-30 13:22:20,798 - INFO - Processing file: outputs\11697_courtbook.csv (missing corresponding chronology file)
+2025-04-30 13:22:20,819 - INFO - Processing records 1 to 3 of 3 in outputs\11697_courtbook.csv
+2025-04-30 13:22:20,825 - INFO - Restarting API client to prevent session issues.
+2025-04-30 13:23:13,997 - INFO - Saved batch 1 to outputs\11697_part1.csv
+2025-04-30 13:23:18,581 - INFO - Merging 1 parts for court book 11697
+2025-04-30 13:23:18,743 - INFO - Final file saved: outputs/11697_chronology.xlsx (3 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11697_source_extract.json
+JSON file saved: 11697_response_extract.json
+JSON file saved: 11697_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11697
+Payload loaded: 3 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11697
+2025-04-30 13:23:30,514 - INFO - Deleted: outputs\11697_part1.csv
+2025-04-30 13:23:30,572 - INFO - Zipped all output files for 11697 \u2192 run_scripts/processed/11697_archived_outputs.zip
+2025-04-30 13:23:30,584 - INFO - Deleted: outputs\11697_chronology.xlsx
+2025-04-30 13:23:30,588 - INFO - Deleted: outputs\11697_courtbook.csv
+2025-04-30 13:23:30,594 - INFO - Deleted: outputs\11697_payload.json
+2025-04-30 13:23:30,600 - INFO - Deleted: outputs\11697_response_extract.json
+2025-04-30 13:23:30,604 - INFO - Deleted: outputs\11697_source_extract.json
+2025-04-30 13:23:30,609 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step 5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 31, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-30 13:30:21,506 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-30 13:30:21,528 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-30 13:30:21,542 - INFO - Restarting API client to prevent session issues.
+2025-04-30 13:30:29,883 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-30 13:30:32,592 - INFO - Merging 1 parts for court book 11602
+2025-04-30 13:30:32,779 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11602
+Payload loaded: 1 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11602
+2025-04-30 13:30:41,602 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-30 13:30:41,649 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-30 13:30:41,661 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-30 13:30:41,667 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-30 13:30:41,672 - INFO - Deleted: outputs\11602_payload.json
+2025-04-30 13:30:41,677 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-30 13:30:41,683 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-30 13:30:41,688 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step 5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11697_courtbook.csv
+2025-04-30 13:33:20,705 - INFO - Processing file: outputs\11697_courtbook.csv (missing corresponding chronology file)
+2025-04-30 13:33:20,726 - INFO - Processing records 1 to 3 of 3 in outputs\11697_courtbook.csv
+2025-04-30 13:33:20,732 - INFO - Restarting API client to prevent session issues.
+2025-04-30 13:34:11,530 - INFO - Saved batch 1 to outputs\11697_part1.csv
+2025-04-30 13:34:13,781 - INFO - Merging 1 parts for court book 11697
+2025-04-30 13:34:13,887 - INFO - Final file saved: outputs/11697_chronology.xlsx (3 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11697_source_extract.json
+JSON file saved: 11697_response_extract.json
+JSON file saved: 11697_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11697
+Payload loaded: 3 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11697
+2025-04-30 13:34:20,716 - INFO - Deleted: outputs\11697_part1.csv
+2025-04-30 13:34:20,757 - INFO - Zipped all output files for 11697 \u2192 run_scripts/processed/11697_archived_outputs.zip
+2025-04-30 13:34:21,003 - INFO - Deleted: outputs\11697_chronology.xlsx
+2025-04-30 13:34:21,007 - INFO - Deleted: outputs\11697_courtbook.csv
+2025-04-30 13:34:21,012 - INFO - Deleted: outputs\11697_payload.json
+2025-04-30 13:34:21,016 - INFO - Deleted: outputs\11697_response_extract.json
+2025-04-30 13:34:21,020 - INFO - Deleted: outputs\11697_source_extract.json
+2025-04-30 13:34:21,024 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step 5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-30 13:41:21,467 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-30 13:41:21,487 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-30 13:41:21,492 - INFO - Restarting API client to prevent session issues.
+2025-04-30 13:41:29,617 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-30 13:41:32,221 - INFO - Merging 1 parts for court book 11602
+2025-04-30 13:41:32,320 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11602
+Payload loaded: 1 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11602
+2025-04-30 13:41:40,514 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-30 13:41:40,554 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-30 13:41:40,564 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-30 13:41:40,568 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-30 13:41:40,572 - INFO - Deleted: outputs\11602_payload.json
+2025-04-30 13:41:40,576 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-30 13:41:40,580 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-30 13:41:40,583 - INFO - Deleted: outputs\run_logs.csv
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step 5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 31, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-30 13:50:21,228 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-30 13:50:21,247 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-30 13:50:21,253 - INFO - Restarting API client to prevent session issues.
+2025-04-30 13:50:26,956 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-30 13:50:29,711 - INFO - Merging 1 parts for court book 11602
+2025-04-30 13:50:29,800 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11602
+Payload loaded: 1 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11602
+2025-04-30 13:50:37,311 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-30 13:50:37,355 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-30 13:50:37,365 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-30 13:50:37,371 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-30 13:50:37,375 - INFO - Deleted: outputs\11602_payload.json
+2025-04-30 13:50:37,380 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-30 13:50:37,384 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-30 13:50:37,388 - INFO - Deleted: outputs\run_logs.csv
+2025-04-30 13:50:37,391 - INFO - Progress log cleared.
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step 5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 197, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 193, in main
+    process_court_book(client, court_book_id)
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 148, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 165, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 31, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-30 14:00:21,638 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-30 14:00:21,659 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-30 14:00:21,665 - INFO - Restarting API client to prevent session issues.
+2025-04-30 14:00:30,109 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-30 14:00:32,497 - INFO - Merging 1 parts for court book 11602
+2025-04-30 14:00:32,604 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11602
+Payload loaded: 1 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11602
+2025-04-30 14:00:41,456 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-30 14:00:41,541 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-30 14:00:41,552 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-30 14:00:41,557 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-30 14:00:41,561 - INFO - Deleted: outputs\11602_payload.json
+2025-04-30 14:00:41,566 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-30 14:00:41,571 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-30 14:00:41,575 - INFO - Deleted: outputs\run_logs.csv
+2025-04-30 14:00:41,578 - INFO - Progress log cleared.
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step 5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 214, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 205, in main
+    future.result(timeout=30)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 156, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 173, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 31, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-30 14:07:22,004 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-30 14:07:22,031 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-30 14:07:22,035 - INFO - Restarting API client to prevent session issues.
+2025-04-30 14:07:30,547 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-30 14:07:32,699 - INFO - Merging 1 parts for court book 11602
+2025-04-30 14:07:32,799 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11602
+Payload loaded: 1 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11602
+2025-04-30 14:07:40,926 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-30 14:07:40,962 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-30 14:07:40,969 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-30 14:07:40,973 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-30 14:07:40,977 - INFO - Deleted: outputs\11602_payload.json
+2025-04-30 14:07:40,981 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-30 14:07:40,984 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-30 14:07:40,988 - INFO - Deleted: outputs\run_logs.csv
+2025-04-30 14:07:40,990 - INFO - Progress log cleared.
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step 5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 214, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 205, in main
+    future.result(timeout=30)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 156, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 173, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\07_main.py", line 31, in <module>
+    subprocess.run(["python", "01_webapp_extract_data.py"], check=True)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '01_webapp_extract_data.py']' returned non-zero exit status 1.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-30 14:13:21,861 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-30 14:13:21,879 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-30 14:13:21,884 - INFO - Restarting API client to prevent session issues.
+2025-04-30 14:13:31,056 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-30 14:13:33,322 - INFO - Merging 1 parts for court book 11602
+2025-04-30 14:13:33,415 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11602
+Payload loaded: 1 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11602
+2025-04-30 14:13:41,089 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-30 14:13:41,131 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-30 14:13:41,137 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-30 14:13:41,141 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-30 14:13:41,145 - INFO - Deleted: outputs\11602_payload.json
+2025-04-30 14:13:41,149 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-30 14:13:41,154 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-30 14:13:41,158 - INFO - Deleted: outputs\run_logs.csv
+2025-04-30 14:13:41,161 - INFO - Progress log cleared.
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step 5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 214, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 205, in main
+    future.result(timeout=30)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 156, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 173, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+ERROR: Step 1 (data extraction) failed.
+API Response (Status 200)
+API Response (Status 200)
+CSV file successfully saved: outputs/11602_courtbook.csv
+2025-04-30 14:22:22,360 - INFO - Processing file: outputs\11602_courtbook.csv (missing corresponding chronology file)
+2025-04-30 14:22:22,379 - INFO - Processing records 1 to 1 of 1 in outputs\11602_courtbook.csv
+2025-04-30 14:22:22,384 - INFO - Restarting API client to prevent session issues.
+2025-04-30 14:22:31,382 - INFO - Saved batch 1 to outputs\11602_part1.csv
+2025-04-30 14:22:33,710 - INFO - Merging 1 parts for court book 11602
+2025-04-30 14:22:33,819 - INFO - Final file saved: outputs/11602_chronology.xlsx (1 unique entries processed)
+API Response (Status 200)
+JSON file saved: 11602_source_extract.json
+JSON file saved: 11602_response_extract.json
+JSON file saved: 11602_payload.json
+PUT request successful: 200
+Updated Court Book ID: 11602
+Payload loaded: 1 records
+Excluded 0 record(s) based on ID filter
+PUT request successful: 200
+Updated Court Book ID: 11602
+2025-04-30 14:22:41,393 - INFO - Deleted: outputs\11602_part1.csv
+2025-04-30 14:22:41,429 - INFO - Zipped all output files for 11602 \u2192 run_scripts/processed/11602_archived_outputs.zip
+2025-04-30 14:22:41,435 - INFO - Deleted: outputs\11602_chronology.xlsx
+2025-04-30 14:22:41,439 - INFO - Deleted: outputs\11602_courtbook.csv
+2025-04-30 14:22:41,443 - INFO - Deleted: outputs\11602_payload.json
+2025-04-30 14:22:41,448 - INFO - Deleted: outputs\11602_response_extract.json
+2025-04-30 14:22:41,451 - INFO - Deleted: outputs\11602_source_extract.json
+2025-04-30 14:22:41,454 - INFO - Deleted: outputs\run_logs.csv
+2025-04-30 14:22:41,456 - INFO - Progress log cleared.
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+Step 2: Generating chronologies in chunks then merging
+Step 3: Post processing the data
+Step 4: Build the writeback payload
+Step 5: Writing back...
+Step 6: Cleanup and finish
+All done.
+API Response (Status 401)
+API request failed: 401 - 
+Traceback (most recent call last):
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 214, in <module>
+    main()
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 205, in main
+    future.result(timeout=30)
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\10392\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 156, in process_court_book
+    book_item_lookup = fetch_book_items(client, court_book_id)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "\\V0050\05_CTP_chronology\01_webapp_extract_data.py", line 173, in fetch_book_items
+    book_item_lookup = {str(item["id"]): item["description"] for item in response_data if "id" in item and "description" in item}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+New value detected running scripts...
+Step 1: Extracting data and saving as csv
+ERROR: Step 1 (data extraction) failed.
