@@ -3,6 +3,7 @@ models/
 temp/
 secrets.json
 outputs/
+run_scripts/
 files/
 archived/
 archives/
@@ -14,6 +15,7 @@ readme.pdf
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+*.log
 
 # Environments
 .env
